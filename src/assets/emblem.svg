@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="12" fill="#ffffff"/>
+  <circle cx="60" cy="40" r="26" fill="#F97316"/>
+  <path d="M30 85c10-18 40-18 50 0" fill="#2563EB"/>
+  <text x="60" y="98" font-size="10" text-anchor="middle" fill="#0F172A" font-family="Arial">CIVIC</text>
+</svg>
