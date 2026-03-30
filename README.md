@@ -1,92 +1,85 @@
-CivicConnect
+# CivicConnect  
+### AI-Powered Grievance Redressal Platform  
 
-AI-Powered Grievance Redressal Platform
+---
 
-Overview
+## Overview
 
-CivicConnect is an AI-based system that improves public grievance handling by automating complaint analysis, prioritization, routing, and tracking.
+CivicConnect is an AI-based system designed to improve public grievance handling by automating complaint analysis, prioritization, routing, and tracking.
 
-Built during the Vibe Coding Hackathon by Team Byteblazers.
+Developed during the **Vibe Coding Hackathon** by **Team Byteblazers**.
 
-Problem
+---
 
-Current systems are:
+## Problem
 
-Unstructured (text, voice, mixed inputs)
-Slow due to manual processing
-Inefficient in routing
-Lacking transparency
-Solution
+Current grievance systems face multiple challenges:
 
-The platform uses AI to:
+- Unstructured complaints (text, voice, mixed inputs)  
+- Slow manual processing  
+- Incorrect or delayed routing  
+- Lack of transparency in resolution  
 
-Classify complaints
-Assign priority
-Route to correct departments
-Track resolution status
-Features
-AI-based complaint intake (text, voice, image)
-Automatic routing
-Priority scoring
-Image-based verification
-Tech Stack
+---
 
-Frontend: React, Vite, TailwindCSS
-Backend: FastAPI, Python
-Database: MongoDB
-AI: Mistral AI, LangChain, LangGraph
-Auth: JWT, bcrypt
+## Solution
 
-Setup
-Prerequisites
+CivicConnect introduces an AI-driven workflow that:
 
-Node.js, Python, MongoDB, Git
+- Classifies complaints automatically  
+- Assigns priority based on severity  
+- Routes issues to the correct departments  
+- Enables transparent tracking of resolutions  
 
-Installation
-git clone https://github.com/Swap9035/CivicConnect.git
-cd CivicConnect
+---
 
-Backend
-cd backend
-python -m venv myenv
-source myenv/bin/activate   # or myenv\Scripts\activate (Windows)
-pip install -r requirements.txt
+## Key Features
 
-Create .env:
+- AI-based complaint intake (text, voice, image)  
+- Intelligent routing system  
+- Priority scoring for urgent cases  
+- Image-based verification for resolution proof  
 
-MONGO_URI=mongodb://localhost:27017/grievance_db
-MISTRAL_API_KEY=your_api_key
-JWT_SECRET_KEY=your_secret_key
+---
 
-Run:
-python main.py
+## Tech Stack
 
-Frontend
-cd ..
-npm install
+**Frontend**  
+React, Vite, TailwindCSS  
 
-Create .env:
-VITE_API_BASE_URL=http://localhost:8000
+**Backend**  
+FastAPI, Python  
 
-Run:
-npm run dev
+**Database**  
+MongoDB  
 
-Usage
+**AI/ML**  
+Mistral AI, LangChain, LangGraph  
 
-Citizen: submit and track complaints
-Officer: manage and resolve tickets
-Admin: manage users and system
+**Authentication**  
+JWT, bcrypt  
 
-Admin Login
+---
 
-Email: superadmin@gov.in
+## Resources
 
-Password: TempAdmin@123
+**Repository**  
+https://github.com/Swap9035/CivicConnect  
 
-Contributors
+**Issues / Feature Requests**  
+https://github.com/Swap9035/CivicConnect/issues  
 
-Swap9035, Himanshu-code1, khanaa4, Adityapandey6969
+---
 
-License
+## Contributors
 
-MIT License
+- Swap9035  
+- Himanshu-code1  
+- khanaa4  
+- Adityapandey6969  
+
+---
+
+## License
+
+MIT License  
