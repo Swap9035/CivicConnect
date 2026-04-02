@@ -181,7 +181,7 @@ export default function Home() {
           <h3 className="text-center text-2xl font-bold mb-8">
             Choose your access
           </h3>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-4 gap-6">
             <div className="p-6 rounded-2xl border border-slate-100 shadow-sm text-center">
               <div className="w-16 h-16 rounded-full bg-blue-50 mx-auto flex items-center justify-center text-blue-600 font-bold mb-4">
                 C
@@ -228,6 +228,22 @@ export default function Home() {
                 className="inline-block mt-4 text-sm font-semibold text-orange-600"
               >
                 Admin Console →
+              </Link>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-indigo-200 shadow-sm text-center bg-gradient-to-b from-indigo-50 to-white">
+              <div className="w-16 h-16 rounded-full bg-indigo-100 mx-auto flex items-center justify-center text-indigo-600 font-bold mb-4">
+                📊
+              </div>
+              <h4 className="font-bold text-indigo-800">Nagpur Analytics</h4>
+              <p className="text-sm text-slate-500 mt-2">
+                Ward heatmaps, complaint rankings, trends, and cross-dataset civic intelligence.
+              </p>
+              <Link
+                to="/analytics"
+                className="inline-block mt-4 text-sm font-semibold text-indigo-600"
+              >
+                View Dashboard →
               </Link>
             </div>
           </div>

@@ -1,0 +1,197 @@
+{
+  "type": "FeatureCollection",
+  "name": "Nagpur_Wards",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_01", "ward_name": "Laxmi Nagar", "ward_number": 1, "zone": "Laxmi Nagar Zone", "zone_id": "zone_01" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.055, 21.155], [79.075, 21.155], [79.075, 21.140], [79.055, 21.140], [79.055, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_02", "ward_name": "Dharampeth", "ward_number": 2, "zone": "Laxmi Nagar Zone", "zone_id": "zone_01" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.040, 21.155], [79.055, 21.155], [79.055, 21.140], [79.040, 21.140], [79.040, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_03", "ward_name": "Dhantoli", "ward_number": 3, "zone": "Laxmi Nagar Zone", "zone_id": "zone_01" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.075, 21.155], [79.090, 21.155], [79.090, 21.143], [79.075, 21.143], [79.075, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_04", "ward_name": "Sakkardara", "ward_number": 4, "zone": "Laxmi Nagar Zone", "zone_id": "zone_01" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.090, 21.155], [79.105, 21.155], [79.105, 21.143], [79.090, 21.143], [79.090, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_05", "ward_name": "Sitabuldi", "ward_number": 5, "zone": "Dharampeth Zone", "zone_id": "zone_02" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.075, 21.143], [79.090, 21.143], [79.090, 21.133], [79.075, 21.133], [79.075, 21.143]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_06", "ward_name": "Ramdaspeth", "ward_number": 6, "zone": "Dharampeth Zone", "zone_id": "zone_02" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.055, 21.140], [79.075, 21.140], [79.075, 21.128], [79.055, 21.128], [79.055, 21.140]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_07", "ward_name": "Mahal", "ward_number": 7, "zone": "Dharampeth Zone", "zone_id": "zone_02" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.090, 21.143], [79.105, 21.143], [79.105, 21.133], [79.090, 21.133], [79.090, 21.143]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_08", "ward_name": "Mominpura", "ward_number": 8, "zone": "Dharampeth Zone", "zone_id": "zone_02" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.105, 21.143], [79.118, 21.143], [79.118, 21.133], [79.105, 21.133], [79.105, 21.143]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_09", "ward_name": "Hanuman Nagar", "ward_number": 9, "zone": "Hanuman Nagar Zone", "zone_id": "zone_03" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.040, 21.128], [79.060, 21.128], [79.060, 21.112], [79.040, 21.112], [79.040, 21.128]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_10", "ward_name": "Narendra Nagar", "ward_number": 10, "zone": "Hanuman Nagar Zone", "zone_id": "zone_03" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.060, 21.128], [79.078, 21.128], [79.078, 21.115], [79.060, 21.115], [79.060, 21.128]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_11", "ward_name": "Nandanvan", "ward_number": 11, "zone": "Hanuman Nagar Zone", "zone_id": "zone_03" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.078, 21.128], [79.095, 21.128], [79.095, 21.115], [79.078, 21.115], [79.078, 21.128]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_12", "ward_name": "Sonegaon", "ward_number": 12, "zone": "Hanuman Nagar Zone", "zone_id": "zone_03" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.095, 21.128], [79.115, 21.128], [79.115, 21.115], [79.095, 21.115], [79.095, 21.128]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_13", "ward_name": "Gandhibagh", "ward_number": 13, "zone": "Dhantoli Zone", "zone_id": "zone_04" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.090, 21.133], [79.105, 21.133], [79.105, 21.122], [79.090, 21.122], [79.090, 21.133]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_14", "ward_name": "Pachpaoli", "ward_number": 14, "zone": "Dhantoli Zone", "zone_id": "zone_04" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.105, 21.133], [79.118, 21.133], [79.118, 21.122], [79.105, 21.122], [79.105, 21.133]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_15", "ward_name": "Satranjipura", "ward_number": 15, "zone": "Dhantoli Zone", "zone_id": "zone_04" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.118, 21.133], [79.132, 21.133], [79.132, 21.122], [79.118, 21.122], [79.118, 21.133]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_16", "ward_name": "Nehru Nagar", "ward_number": 16, "zone": "Nehru Nagar Zone", "zone_id": "zone_05" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.040, 21.170], [79.060, 21.170], [79.060, 21.155], [79.040, 21.155], [79.040, 21.170]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_17", "ward_name": "Jaripatka", "ward_number": 17, "zone": "Nehru Nagar Zone", "zone_id": "zone_05" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.060, 21.170], [79.078, 21.170], [79.078, 21.155], [79.060, 21.155], [79.060, 21.170]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_18", "ward_name": "Indora", "ward_number": 18, "zone": "Nehru Nagar Zone", "zone_id": "zone_05" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.078, 21.170], [79.098, 21.170], [79.098, 21.155], [79.078, 21.155], [79.078, 21.170]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_19", "ward_name": "Lakadganj", "ward_number": 19, "zone": "Nehru Nagar Zone", "zone_id": "zone_05" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.098, 21.170], [79.118, 21.170], [79.118, 21.155], [79.098, 21.155], [79.098, 21.170]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_20", "ward_name": "Imamwada", "ward_number": 20, "zone": "Gandhibagh Zone", "zone_id": "zone_06" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.105, 21.155], [79.118, 21.155], [79.118, 21.143], [79.105, 21.143], [79.105, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_21", "ward_name": "Mangalwari", "ward_number": 21, "zone": "Gandhibagh Zone", "zone_id": "zone_06" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.118, 21.155], [79.132, 21.155], [79.132, 21.143], [79.118, 21.143], [79.118, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_22", "ward_name": "Ashi Nagar", "ward_number": 22, "zone": "Gandhibagh Zone", "zone_id": "zone_06" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.132, 21.155], [79.148, 21.155], [79.148, 21.143], [79.132, 21.143], [79.132, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_23", "ward_name": "Bharatwada", "ward_number": 23, "zone": "Satranjipura Zone", "zone_id": "zone_07" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.040, 21.112], [79.060, 21.112], [79.060, 21.098], [79.040, 21.098], [79.040, 21.112]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_24", "ward_name": "Wadi", "ward_number": 24, "zone": "Satranjipura Zone", "zone_id": "zone_07" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.060, 21.115], [79.078, 21.115], [79.078, 21.100], [79.060, 21.100], [79.060, 21.115]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_25", "ward_name": "Hudkeshwar", "ward_number": 25, "zone": "Satranjipura Zone", "zone_id": "zone_07" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.078, 21.115], [79.098, 21.115], [79.098, 21.098], [79.078, 21.098], [79.078, 21.115]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_26", "ward_name": "Tajbagh", "ward_number": 26, "zone": "Lakadganj Zone", "zone_id": "zone_08" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.118, 21.170], [79.135, 21.170], [79.135, 21.155], [79.118, 21.155], [79.118, 21.170]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_27", "ward_name": "Sanjay Nagar", "ward_number": 27, "zone": "Lakadganj Zone", "zone_id": "zone_08" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.135, 21.170], [79.150, 21.170], [79.150, 21.155], [79.135, 21.155], [79.135, 21.170]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_28", "ward_name": "Wathoda", "ward_number": 28, "zone": "Lakadganj Zone", "zone_id": "zone_08" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.148, 21.155], [79.165, 21.155], [79.165, 21.143], [79.148, 21.143], [79.148, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_29", "ward_name": "Hasanbagh", "ward_number": 29, "zone": "Mangalwari Zone", "zone_id": "zone_09" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.132, 21.143], [79.148, 21.143], [79.148, 21.130], [79.132, 21.130], [79.132, 21.143]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_30", "ward_name": "Wardhaman Nagar", "ward_number": 30, "zone": "Mangalwari Zone", "zone_id": "zone_09" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.040, 21.140], [79.055, 21.140], [79.055, 21.128], [79.040, 21.128], [79.040, 21.140]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_31", "ward_name": "Khamla", "ward_number": 31, "zone": "Mangalwari Zone", "zone_id": "zone_09" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.025, 21.140], [79.040, 21.140], [79.040, 21.128], [79.025, 21.128], [79.025, 21.140]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_32", "ward_name": "Pratap Nagar", "ward_number": 32, "zone": "Mangalwari Zone", "zone_id": "zone_09" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.025, 21.155], [79.040, 21.155], [79.040, 21.140], [79.025, 21.140], [79.025, 21.155]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_33", "ward_name": "Mankapur", "ward_number": 33, "zone": "Ashi Nagar Zone", "zone_id": "zone_10" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.025, 21.170], [79.040, 21.170], [79.040, 21.155], [79.025, 21.155], [79.025, 21.170]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_34", "ward_name": "Sadar", "ward_number": 34, "zone": "Ashi Nagar Zone", "zone_id": "zone_10" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.055, 21.185], [79.075, 21.185], [79.075, 21.170], [79.055, 21.170], [79.055, 21.185]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_35", "ward_name": "Pardi", "ward_number": 35, "zone": "Ashi Nagar Zone", "zone_id": "zone_10" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.075, 21.185], [79.095, 21.185], [79.095, 21.170], [79.075, 21.170], [79.075, 21.185]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_36", "ward_name": "Gittikhadan", "ward_number": 36, "zone": "Ashi Nagar Zone", "zone_id": "zone_10" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.095, 21.185], [79.115, 21.185], [79.115, 21.170], [79.095, 21.170], [79.095, 21.185]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_37", "ward_name": "Trimurtee Nagar", "ward_number": 37, "zone": "Ashi Nagar Zone", "zone_id": "zone_10" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.025, 21.185], [79.055, 21.185], [79.055, 21.170], [79.025, 21.170], [79.025, 21.185]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "ward_id": "ward_38", "ward_name": "Gorewada", "ward_number": 38, "zone": "Ashi Nagar Zone", "zone_id": "zone_10" },
+      "geometry": { "type": "Polygon", "coordinates": [[[79.020, 21.195], [79.055, 21.195], [79.055, 21.185], [79.020, 21.185], [79.020, 21.195]]] }
+    }
+  ]
+}

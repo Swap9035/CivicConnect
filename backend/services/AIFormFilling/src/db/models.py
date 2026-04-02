@@ -33,6 +33,10 @@ class GrievanceForm(BaseModel):
     landmark: Optional[str] = None
     geo_coordinates: Optional[dict] = None  # {"lat": float, "lng": float}
     area_ward_name: Optional[str] = None
+    ward_id: Optional[str] = None          # Normalized Nagpur ward reference
+    zone_id: Optional[str] = None          # Derived from ward_id
+    pincode: Optional[str] = None
+    nagpur_locality: Optional[str] = None   # Sub-area within ward
     location_hint: Optional[str] = None
     
     # Category 3: Evidence & Description
@@ -72,6 +76,7 @@ class AgentResponse(BaseModel):
     landmark: Optional[str] = None
     location_hint: Optional[str] = None
     area_ward_name: Optional[str] = None
+    ward_id: Optional[str] = None          # Normalized Nagpur ward reference
     full_description: Optional[str] = None
     incident_datetime: Optional[str] = None
     is_recurring: Optional[bool] = None

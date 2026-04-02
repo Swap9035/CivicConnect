@@ -9,6 +9,8 @@ const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
+    "Bypass-Tunnel-Reminder": "true",
+    "ngrok-skip-browser-warning": "69420"
   },
 });
 
@@ -139,6 +141,55 @@ export const feedbackAPI = {
   getFeedbacks: (skip = 0, limit = 50) =>
     api.get(`/feedback/list?skip=${skip}&limit=${limit}`),
   getFeedback: (feedbackId) => api.get(`/feedback/id/${feedbackId}`),
+};
+
+// Nagpur Civic Intelligence API functions
+export const nagpurAPI = {
+  // Wards & Zones
+  getWards: (zoneId) => api.get(`/nagpur/wards${zoneId ? `?zone_id=${zoneId}` : ''}`),
+  getZones: () => api.get('/nagpur/zones'),
+  getWard: (wardId) => api.get(`/nagpur/wards/${wardId}`),
+  getWardStats: (wardId) => api.get(`/nagpur/wards/${wardId}/stats`),
+
+  // Analytics
+  getOverview: () => api.get('/nagpur/analytics/overview'),
+  getHeatmap: () => api.get('/nagpur/analytics/heatmap'),
+  getRankings: (sortBy = 'complaints', order = 'desc', limit = 38) =>
+    api.get(`/nagpur/analytics/rankings?sort_by=${sortBy}&order=${order}&limit=${limit}`),
+  getTrends: (params = {}) => {
+    const p = new URLSearchParams();
+    if (params.ward_id) p.append('ward_id', params.ward_id);
+    if (params.zone_id) p.append('zone_id', params.zone_id);
+    if (params.days) p.append('days', params.days);
+    if (params.group_by) p.append('group_by', params.group_by);
+    return api.get(`/nagpur/analytics/trends?${p.toString()}`);
+  },
+  getCategoryDistribution: (wardId, zoneId) => {
+    const p = new URLSearchParams();
+    if (wardId) p.append('ward_id', wardId);
+    if (zoneId) p.append('zone_id', zoneId);
+    return api.get(`/nagpur/analytics/category-distribution?${p.toString()}`);
+  },
+  getZoneSummary: () => api.get('/nagpur/analytics/zone-summary'),
+  getCorrelations: () => api.get('/nagpur/analytics/correlations'),
+  getDatasetInsights: () => api.get('/nagpur/analytics/dataset-insights'),
+
+  // Datasets
+  getWaterSupply: (params = {}) => {
+    const p = new URLSearchParams();
+    if (params.ward_id) p.append('ward_id', params.ward_id);
+    if (params.skip) p.append('skip', params.skip);
+    if (params.limit) p.append('limit', params.limit);
+    return api.get(`/nagpur/water-supply?${p.toString()}`);
+  },
+  getSanitation: (params = {}) => {
+    const p = new URLSearchParams();
+    if (params.ward_id) p.append('ward_id', params.ward_id);
+    if (params.skip) p.append('skip', params.skip);
+    if (params.limit) p.append('limit', params.limit);
+    return api.get(`/nagpur/sanitation?${p.toString()}`);
+  },
+  getDatasetsSummary: () => api.get('/nagpur/datasets/summary'),
 };
 
 export default api;

@@ -1,0 +1,731 @@
+City Name,Zone Name,Ward name,Ward No.,Waste Quantity(TPD),Collection Vehicle details-Type of Waste collection vehicle,Collection Vehicle details-Capacity(in cubic meters),Collection Vehicle details-Year of purchase,Collection Vehicle details-Nos of Vehicle,Collection Vehicle details-Frequency of trips(Daily, Biweekly, Fortnightly, Monthly)
+Nagpur,Laxminagar Zone 1,MH-31 CQ-2284,16,NA,Mahindra Loadking,3.08,2008,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 CQ 2285,16,NA,Mahindra Loadking,3.08,2008,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 EN1148,16,NA,Ashok Leyland Dost,1.5,2016,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31-CQ-2301,16,NA,Mahindra Loadking,3.08,2008,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 DS-3906,16,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 CQ-2322,16,NA,Tata DI 207,1.101,2008,1,Daily
+Nagpur,Laxminagar Zone 1,R1,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R2,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R3,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R4,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R5,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R6,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R7,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R8,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R9,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R10,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R11,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R12,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R13,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R14,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R15,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R16,16,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,GJ-06-AX4153,36,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 CQ-1940,36,NA,Tata DI 207,1.101,2008,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 CQ-2321,36,NA,Tata DI 207,1.101,2008,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 CQ-2320,36,NA,Tata DI 207,1.101,2008,1,Daily
+Nagpur,Laxminagar Zone 1,R17,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R18,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R19,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R20,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R21,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R22,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R23,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R24,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R25,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R26,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R27,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R28,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R29,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R30,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R31,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R32,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R33,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R34,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R35,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R36,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R37,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R38,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R39,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R40,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R41,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R42,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R43,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R44,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R45,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R46,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R47,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R48,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R49,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R50,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R51,36,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,GJ-06-AX4264,37,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Laxminagar Zone 1,GJ-06-AX4214,37,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Laxminagar Zone 1,GJ-06-AX4306,37,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Laxminagar Zone 1,MH-31 CQ-2319,37,NA,Tata DI 207,1.101,2008,1,Daily
+Nagpur,Laxminagar Zone 1,R52,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R53,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R54,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R55,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R56,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R57,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R58,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R59,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R60,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R61,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R62,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R63,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R64,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R65,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R66,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R67,37,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,GJ-06-AX4378,38,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Laxminagar Zone 1,GJ-06-AX4028,38,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Laxminagar Zone 1,R68,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R69,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R70,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R71,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R72,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R73,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R74,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R75,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R76,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Laxminagar Zone 1,R77,38,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 CQ-3294,12,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 CQ-3298,12,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 EN1141,12,NA,Ashok Leyland Dost,1.5,2016,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 EN0780,12,NA,Tata Ace,0.84,2015,1,Daily
+Nagpur,Dharampeth Zone 2,R78,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R79,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R80,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R81,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R82,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R83,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R84,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R85,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R86,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R87,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R88,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R89,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R90,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R91,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R92,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R93,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R94,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R95,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R96,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R97,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R98,12,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 EN0848,13,NA,Tata Ace,0.84,2008,1,Daily
+Nagpur,Dharampeth Zone 2,GJ 06 YY 2757,13,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 EN0461,13,NA,Tata Ace,0.71,2015,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 DS-3748,13,NA,Tata Super,1.405,2016,1,Daily
+Nagpur,Dharampeth Zone 2,R100,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R101,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R102,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R103,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R104,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R105,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R106,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R107,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R108,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R109,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R110,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R111,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R112,13,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 CQ-3283,14,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 DS-4058,14,NA,Tata Super,1.405,2016,1,Daily
+Nagpur,Dharampeth Zone 2,R113,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R114,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R115,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R116,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R117,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R118,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R119,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R120,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R121,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R122,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R123,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R124,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R125,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R126,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R127,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R128,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R129,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R130,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R131,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R132,14,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,GJ 06 AX4241,15,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 EN0781,15,NA,Tata Ace,0.84,2015,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 EN0778,15,NA,Tata Ace,0.84,2015,1,Daily
+Nagpur,Dharampeth Zone 2,MH31 EN0723,15,NA,Ashok Leyland Dost,1.5,2016,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 CQ-1173,15,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 CQ-3216,15,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31-CQ3301,15,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dharampeth Zone 2,MH-31 DS-4060,15,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Dharampeth Zone 2,R133,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R134,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R135,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R136,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R137,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R138,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R139,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R140,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R141,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dharampeth Zone 2,R142,15,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ1160,29,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-DS1844,29,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ1106,29,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ1012,29,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-EN1143,29,NA,Ashok Leyland Dost,1.5,2016,1,Daily
+Nagpur,Hanuman Nagar Zone 3,GJ -06-2748,29,NA,Tata 407,3.55,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-DS3746,29,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Hanuman Nagar Zone 3,GJ -06-2747,29,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R143,29,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R144,29,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ1190,31,NA,Tata Ace,0.84,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-DS3840,31,NA,Tata Super,1.405,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ3092,31,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R145,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R146,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R147,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R148,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R149,31,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R150,31,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R151,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R152,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R153,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R154,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R155,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R156,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R157,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R158,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R159,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R160,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R161,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R162,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R163,31,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R164,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R165,31,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ3291,32,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ3101,32,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ1024,32,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ3302,32,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ1174,32,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ1109,32,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R166,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R167,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R168,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R169,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R170,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R171,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R172,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R173,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R174,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R175,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R176,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R177,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R178,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R179,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R180,32,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ3097,34,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-EN-776,34,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-EN1134,34,NA,Ashok Leyland Dost,1.5,2016,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31 EN0774,34,NA,Tata Ace,0.84,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ3091,34,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-DS3842,34,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Hanuman Nagar Zone 3,MH-31-CQ3094,34,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R181,34,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R182,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R183,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R184,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R185,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R186,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R187,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R188,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R189,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R190,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R191,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R192,34,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Hanuman Nagar Zone 3,R193,34,NA,E-Rickshaw,0.35,NA,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31CQ-3102,17,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dhantoli Zone 4,R194,17,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R195,17,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R196,17,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R197,17,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R198,17,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R199,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R200,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R201,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R202,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R203,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R204,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R205,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R206,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R207,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R208,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R209,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R210,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R211,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R212,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R213,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R214,17,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31EN 0460,33,NA,Tata Ace,0.735,2015,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31CQ-3293,33,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31CQ-3104,33,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31CQ1143,33,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31CQ-1939,33,NA,Mahindra Loadking,3.08,2008,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31CQ2512,33,NA,Mahindra Loadking,3.08,2008,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31DS3841,33,NA,Tata Super,0.71,2012,1,Daily
+Nagpur,Dhantoli Zone 4,GJ 06 XX 9604,33,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Dhantoli Zone 4,R215,33,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R216,33,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R217,33,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R218,33,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31DS-1845,35,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31EN1136,35,NA,Ashok Leyland Dost,1.5,2016,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31EN726,35,NA,Ashok Leyland Dost,1.405,2016,1,Daily
+Nagpur,Dhantoli Zone 4,MH-31DS3744,35,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Dhantoli Zone 4,GJ06AX4188,35,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Dhantoli Zone 4,MH31CQ3086,35,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Dhantoli Zone 4,R219,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R220,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R221,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R222,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R223,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R224,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R225,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R226,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R227,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R228,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R229,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R230,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R231,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R232,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Dhantoli Zone 4,R233,35,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31DS-1843,26,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31CQ1127,26,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31CQ1019,26,NA,Tata Ace,0.51,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31CQ1132,26,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31EN459,26,NA,Tata Ace,0.84,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,GJ06YY2800,26,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,R234,26,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R235,26,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R236,26,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R237,26,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R238,26,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,RJ-19 GA-9418,27,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31EN-1138,27,NA,Ashok L Dost,0.735,2016,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-CQ3093,27,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-EN 458,27,NA,Tata Ace,0.71,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-EN462,27,NA,Tata Ace,0.71,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,R239,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R240,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R241,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R242,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R243,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R244,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R245,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R246,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R247,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R248,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R249,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R250,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R251,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R252,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R253,27,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-DS-1842,28,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-CQ-1171,28,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-CQ 1102,28,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-CQ 1009,28,NA,Tata Ace,0.53,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-CQ 3296,28,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,R254,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R255,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R256,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R257,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R258,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R259,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R260,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R261,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R262,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R263,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R264,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R265,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R266,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R267,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R268,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R269,28,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-CQ-3103,30,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31-CQ1105,30,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31CQ1104,30,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,MH-31CQ1136,30,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Nehrunagar Zone 5,R270,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R271,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R272,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R273,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R274,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R275,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R276,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R277,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R278,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R279,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R280,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R281,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R282,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R283,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Nehrunagar Zone 5,R284,30,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ1188,8,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ1017,8,NA,Tata Ace,0.51,2008,1,Daily
+Nagpur,Gandhibag Zone 6,R285,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R286,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R287,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R288,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R289,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R290,8,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R291,8,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R292,8,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R293,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R294,8,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R295,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R296,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R297,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R298,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R299,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R300,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R301,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R302,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R303,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R304,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R305,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R306,8,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-DS-1833,18,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ3304,18,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Gandhibag Zone 6,R307,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R308,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R309,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R310,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R311,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R312,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R313,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R314,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R315,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R316,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R317,18,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R318,18,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R319,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R320,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R321,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R322,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R323,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R324,18,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R325,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R326,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R327,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R328,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R329,18,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ3295,19,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ3085,19,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Gandhibag Zone 6,R330,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R331,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R332,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R333,19,NA,Ghantagadi,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R334,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R335,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R336,19,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R337,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R338,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R339,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R340,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R341,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R342,19,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R343,19,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ1107,22,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ1124,22,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Gandhibag Zone 6,MH-31-CQ3299,22,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Gandhibag Zone 6,R344,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R345,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R346,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R347,22,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R348,22,NA,Ghantagadi,0.1,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R349,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R350,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R351,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R352,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R353,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R354,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R355,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R356,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R357,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R358,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R359,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Gandhibag Zone 6,R360,22,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,MH-31-CQ-1172,5,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Satranjipura Zone 7,MH-31-CQ-1148,5,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Satranjipura Zone 7,MH-31-DS 3742,5,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Satranjipura Zone 7,R361,5,NA,Ghantagadi,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R362,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R363,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R364,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R365,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R366,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R367,5,NA,Ghantagadi,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R368,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R369,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R370,5,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R371,20,NA,Rickshaw,0.1,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R372,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R373,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R374,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R375,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R376,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R377,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R378,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R379,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R380,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R381,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R382,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R383,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R384,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R385,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R386,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R387,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R388,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R389,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R390,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R391,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R392,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R393,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R394,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R395,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R396,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R397,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R398,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R399,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R400,20,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,MH-31-CQ-3100,21,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Satranjipura Zone 7,MH-31-CQ-3098,21,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Satranjipura Zone 7,R401,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R402,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R403,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R404,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R405,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R406,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R407,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R408,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R409,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R410,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R411,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R412,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R413,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R414,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R415,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R416,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R417,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R418,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R419,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R420,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R421,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R422,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R423,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R424,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R425,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Satranjipura Zone 7,R426,21,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-EN-782,4,NA,Tata Ace,0.71,2015,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ1014,4,NA,Tata Ace,0.53,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ1122,4,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Lakadganj Zone 8,GJ06YY2817,4,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Lakadganj Zone 8,R427,4,NA,Rickshaw,0.15,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R428,4,NA,Rickshaw,0.15,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R429,4,NA,Rickshaw,0.15,NA,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ-1022,23,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ-1194,23,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ-1108,23,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ1016,23,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,R430,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R431,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R432,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R433,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R434,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R435,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R436,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R437,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R438,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R439,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R440,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R441,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R442,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R443,23,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R444,23,NA,Ghantagadi,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ1066,24,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ1020,24,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,R445,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R446,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R447,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R448,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R449,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R450,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R451,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R452,24,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ-1185,25,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ-1101,25,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ1123,25,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ1103,25,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Lakadganj Zone 8,MH-31-CQ3303,25,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Lakadganj Zone 8,R453,25,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R454,25,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R455,25,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R456,25,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Lakadganj Zone 8,R457,25,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-DS-1832,7,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-DS1841,7,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-DS-1840,7,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-CQ-1021,7,NA,Tata Ace,0.51,2008,1,Daily
+Nagpur,Ashinagar Zone 9,R458,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R459,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R460,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R461,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R462,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R463,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R464,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R465,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R466,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R467,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R468,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R469,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R470,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R471,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R472,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R473,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R474,7,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-CQ-1216,6,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-CQ3290,6,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Ashinagar Zone 9,R475,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R476,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R477,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R478,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R479,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R480,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R481,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R482,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R483,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R484,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R485,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R486,6,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-DS-3099,3,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Ashinagar Zone 9,R487,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R488,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R489,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R490,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R491,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R492,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R493,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R494,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R495,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R496,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R497,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R498,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R499,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R500,3,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-EN779,2,NA,Tata Ace,0.84,2015,1,Daily
+Nagpur,Ashinagar Zone 9,MH-31-CQ2839,2,NA,Tata Ace,0.745,2008,1,Daily
+Nagpur,Ashinagar Zone 9,R501,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R502,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R503,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R504,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R505,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R506,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R507,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R508,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R509,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R510,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R511,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R512,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Ashinagar Zone 9,R513,2,NA,Rickshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-EN-1142,1,NA,Tata Ace,0.735,2008,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-CQ-3292,1,NA,Tata Ace,0.835,2008,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-DS4081,1,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-DS3745,1,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-DS-1839,1,NA,Tata super,1.405,2012,1,Daily
+Nagpur,Mangalwari Zone 10,R514,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R515,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R516,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R517,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R518,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R519,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R520,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R521,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R522,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R523,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R524,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R525,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R526,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R527,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R528,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R529,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R530,1,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-DS4059,10,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Mangalwari Zone 10,R531,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R532,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R533,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R534,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R535,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R536,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R537,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R538,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R539,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R540,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R541,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R542,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R543,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R544,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R545,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R546,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R547,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R548,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R549,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R550,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R551,10,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-DS3904,11,NA,Tata Super,1.405,2012,1,Daily
+Nagpur,Mangalwari Zone 10,MH-31-EN0775,11,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Mangalwari Zone 10,GJ 06 XX 1183,11,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Mangalwari Zone 10,GJ06YY2740,11,NA,Tata Ace,0.7,2008,1,Daily
+Nagpur,Mangalwari Zone 10,R552,11,NA,Richshaw,0.2,2008,1,Daily
+Nagpur,Mangalwari Zone 10,R553,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R554,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R555,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R556,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R557,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R558,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R559,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R560,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R561,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R562,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R563,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R564,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R565,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R566,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R567,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R568,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R569,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R570,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R571,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R572,11,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,MH 31 DS 3743,9,NA,Tata Ace,0.7,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R573,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R574,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R575,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R576,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R577,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R578,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R579,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R580,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R581,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R582,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R583,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R584,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R585,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R586,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R587,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,R588,9,NA,Richshaw,0.2,NA,1,Daily
+Nagpur,Mangalwari Zone 10,NA,9,NA,Richshaw,0.2,NA,1,Daily

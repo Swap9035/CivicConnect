@@ -27,6 +27,13 @@ from services.clarification_service.apis.routes import router as clarification_r
 # Import FeedbackService router
 from services.feedback_service.apis.feedback_routes import router as feedback_router
 
+# Import Nagpur Data Service components
+from services.nagpur_data_service.db.connection import connect_nagpur_db, close_nagpur_db
+from services.nagpur_data_service.scripts.seed_wards import seed_wards
+from services.nagpur_data_service.apis.ward_routes import router as nagpur_ward_router
+from services.nagpur_data_service.apis.analytics_routes import router as nagpur_analytics_router
+from services.nagpur_data_service.apis.dataset_routes import router as nagpur_dataset_router
+
 load_dotenv()
 
 @asynccontextmanager
@@ -38,6 +45,10 @@ async def lifespan(app: FastAPI):
     await init_officer_resolution_service()  # For OfficerResolutionService
     await create_initial_superadmin()
 
+    # Connect Nagpur civic data DB and seed wards
+    nagpur_db = await connect_nagpur_db()
+    await seed_wards(nagpur_db)
+
     # Start background worker to monitor grievance submissions
     asyncio.create_task(monitor_grievance_submissions())
     yield
@@ -46,6 +57,7 @@ async def lifespan(app: FastAPI):
     close_analysis_mongo()  # For analysis service (synchronous)
     await close_superuser_mongo()  # For SuperUser service
     await cleanup_officer_resolution_service()  # For OfficerResolutionService
+    await close_nagpur_db()  # For Nagpur Data Service
 
 app = FastAPI(
     title="GFG Backend",
@@ -78,6 +90,11 @@ app.include_router(clarification_router, prefix="/clarifications", tags=["clarif
 
 # Include FeedbackService router
 app.include_router(feedback_router)
+
+# Include Nagpur Data Service routers
+app.include_router(nagpur_ward_router, prefix="/nagpur", tags=["nagpur"])
+app.include_router(nagpur_analytics_router, prefix="/nagpur/analytics", tags=["nagpur-analytics"])
+app.include_router(nagpur_dataset_router, prefix="/nagpur", tags=["nagpur-datasets"])
 
 if __name__ == "__main__":
     import uvicorn

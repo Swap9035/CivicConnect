@@ -12,6 +12,7 @@ import CitizenPrevious from "./Pages/CitizenPrevious";
 import CitizenStatus from "./Pages/CitizenStatus";
 import OfficerDashboard from "./Pages/OfficerDashboard";
 import AdminDashboard from "./Pages/AdminDashboard";
+import AnalyticsDashboard from "./Pages/AnalyticsDashboard";
 import Contact from "./Pages/Contact";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/officer" element={<OfficerDashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/analytics" element={<AnalyticsDashboard />} />
           </Routes>
         </div>
       </Router>

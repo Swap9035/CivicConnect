@@ -4,7 +4,7 @@ Your task is to analyze the input text and extract the following fields:
 
 CATEGORY 1 - Core Identification:
 - title: A 5-10 word summary of the issue
-- category: One of [Sanitation, Water Supply, Electricity, Roads, Public Safety, Other]
+- category: Prioritize matching closely with dataset categories [Sanitation, Water Supply, Civic Metrics]. If the complaint does not fit these, generate a precise 1-2 word category name that best describes it (e.g., "Stray Animals", "Traffic").
 - priority: One of [Low, Medium, High] based on urgency
 - urgency_reason: Brief explanation for the priority level
 

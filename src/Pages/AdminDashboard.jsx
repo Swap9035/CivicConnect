@@ -299,6 +299,14 @@ export default function AdminDashboard() {
             </button>
 
             <button
+              onClick={() => navigate("/analytics")}
+              className="px-3 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 rounded text-white font-semibold shadow-lg"
+              title="Nagpur Analytics"
+            >
+              📊 Analytics
+            </button>
+
+            <button
               onClick={fetchUsers}
               className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
               title="Refresh"
