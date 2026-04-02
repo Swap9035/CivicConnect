@@ -1,4 +1,4 @@
-# CivicConnect  
+## Civic Connect 
 ### AI-Powered Grievance Redressal Platform  
 
 ---
