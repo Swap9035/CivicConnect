@@ -1,44 +1,41 @@
 from fastapi import APIRouter, Query
-from typing import Optional
-from datetime import datetime, timedelta
+from typing import Optional, List, Dict
+from datetime import datetime, timedelta, timezone
 from services.nagpur_data_service.db.connection import get_nagpur_db
 
 router = APIRouter()
-
 
 @router.get("/heatmap")
 async def get_heatmap_data():
     """Complaint density per ward for heatmap visualization."""
     db = get_nagpur_db()
+    g_col = db.collection("grievance_forms")
+    w_col = db.collection("wards")
     
-    # Get complaint counts per ward from grievance DB
-    from services.AIFormFilling.src.db.connection import get_database as get_grievance_db
-    gdb = get_grievance_db()
-    
-    pipeline = [
-        {"$match": {"ward_id": {"$ne": None, "$exists": True}}},
-        {"$group": {"_id": "$ward_id", "count": {"$sum": 1}}},
-        {"$sort": {"count": -1}}
-    ]
-    
+    # Get grievance counts per ward
     ward_counts = {}
     max_count = 1
-    async for doc in gdb.grievance_forms.aggregate(pipeline):
-        ward_counts[doc["_id"]] = doc["count"]
-        if doc["count"] > max_count:
-            max_count = doc["count"]
+    docs = g_col.where("ward_id", "!=", None).stream()
+    async for doc in docs:
+        wid = doc.to_dict().get("ward_id")
+        if wid:
+            ward_counts[wid] = ward_counts.get(wid, 0) + 1
+            if ward_counts[wid] > max_count:
+                max_count = ward_counts[wid]
 
     # Merge with ward info
     heatmap_data = []
-    async for ward in db.wards.find({}).sort("ward_number", 1):
-        wid = ward["_id"]
+    wdocs = w_col.order_by("ward_number").stream()
+    async for wdoc in wdocs:
+        ward = wdoc.to_dict()
+        wid = wdoc.id
         count = ward_counts.get(wid, 0)
         heatmap_data.append({
             "ward_id": wid,
-            "ward_name": ward["ward_name"],
-            "ward_number": ward["ward_number"],
-            "zone": ward["zone"],
-            "zone_id": ward["zone_id"],
+            "ward_name": ward.get("ward_name"),
+            "ward_number": ward.get("ward_number"),
+            "zone": ward.get("zone"),
+            "zone_id": ward.get("zone_id"),
             "count": count,
             "intensity": round(count / max_count, 2) if max_count > 0 else 0,
             "population": ward.get("population", 0),
@@ -46,68 +43,77 @@ async def get_heatmap_data():
 
     return {"heatmap": heatmap_data, "max_count": max_count, "total_wards": len(heatmap_data)}
 
-
 @router.get("/rankings")
 async def get_ward_rankings(
     sort_by: str = Query("complaints", regex="^(complaints|resolution_time)$"),
     limit: int = Query(38, ge=1, le=38),
     order: str = Query("desc", regex="^(asc|desc)$")
 ):
-    """Rank wards by complaint volume or avg resolution time."""
-    from services.AIFormFilling.src.db.connection import get_database as get_grievance_db
-    gdb = get_grievance_db()
+    """Rank wards by complaint volume via in-memory aggregation."""
     db = get_nagpur_db()
+    g_col = db.collection("grievance_forms")
+    w_col = db.collection("wards")
 
-    pipeline = [
-        {"$match": {"ward_id": {"$ne": None, "$exists": True}}},
-        {"$group": {
-            "_id": "$ward_id",
-            "complaint_count": {"$sum": 1},
-            "open_count": {"$sum": {"$cond": [{"$in": ["$status", ["submitted", "assigned", "in_progress", "Assigned", "In Progress"]]}, 1, 0]}},
-            "resolved_count": {"$sum": {"$cond": [{"$in": ["$status", ["resolved", "closed", "confirmed", "Resolved"]]}, 1, 0]}},
-            "categories": {"$push": "$category"},
-        }},
-        {"$sort": {"complaint_count": -1 if order == "desc" else 1}},
-        {"$limit": limit}
-    ]
-
+    # Aggregate stats in memory
     ward_stats = {}
-    async for doc in gdb.grievance_forms.aggregate(pipeline):
-        # Find top category
-        cats = [c for c in doc.get("categories", []) if c]
-        top_cat = max(set(cats), key=cats.count) if cats else None
-        ward_stats[doc["_id"]] = {
-            "complaint_count": doc["complaint_count"],
-            "open_count": doc["open_count"],
-            "resolved_count": doc["resolved_count"],
-            "top_category": top_cat,
-        }
+    docs = g_col.stream()
+    async for doc in docs:
+        data = doc.to_dict()
+        wid = data.get("ward_id")
+        if not wid: continue
+        
+        if wid not in ward_stats:
+            ward_stats[wid] = {
+                "complaint_count": 0,
+                "open_count": 0,
+                "resolved_count": 0,
+                "categories": []
+            }
+        
+        stats = ward_stats[wid]
+        stats["complaint_count"] += 1
+        status = (data.get("status") or "").lower()
+        if status in ["submitted", "assigned", "in_progress", "assigned", "in progress"]:
+            stats["open_count"] += 1
+        elif status in ["resolved", "closed", "confirmed", "resolved"]:
+            stats["resolved_count"] += 1
+        
+        if data.get("category"):
+            stats["categories"].append(data["category"])
 
     # Merge with ward info
     rankings = []
-    async for ward in db.wards.find({}):
-        wid = ward["_id"]
-        stats = ward_stats.get(wid, {"complaint_count": 0, "open_count": 0, "resolved_count": 0, "top_category": None})
+    wdocs = w_col.stream()
+    async for wdoc in wdocs:
+        ward = wdoc.to_dict()
+        wid = wdoc.id
+        s = ward_stats.get(wid, {"complaint_count": 0, "open_count": 0, "resolved_count": 0, "categories": []})
+        
+        # Calculate top category
+        cats = s["categories"]
+        top_cat = max(set(cats), key=cats.count) if cats else None
+        
         rankings.append({
             "ward_id": wid,
-            "ward_name": ward["ward_name"],
-            "ward_number": ward["ward_number"],
-            "zone": ward["zone"],
+            "ward_name": ward.get("ward_name"),
+            "ward_number": ward.get("ward_number"),
+            "zone": ward.get("zone"),
             "population": ward.get("population", 0),
-            **stats
+            "complaint_count": s["complaint_count"],
+            "open_count": s["open_count"],
+            "resolved_count": s["resolved_count"],
+            "top_category": top_cat,
         })
 
     # Sort
     reverse = order == "desc"
-    if sort_by == "complaints":
-        rankings.sort(key=lambda x: x["complaint_count"], reverse=reverse)
+    rankings.sort(key=lambda x: x["complaint_count"], reverse=reverse)
     
     # Add rank numbers
     for i, r in enumerate(rankings):
         r["rank"] = i + 1
 
     return {"rankings": rankings[:limit], "total": len(rankings), "sort_by": sort_by, "order": order}
-
 
 @router.get("/trends")
 async def get_complaint_trends(
@@ -116,234 +122,227 @@ async def get_complaint_trends(
     days: int = Query(90, ge=7, le=365),
     group_by: str = Query("week", regex="^(day|week|month)$")
 ):
-    """Time-series complaint trends, optionally filtered by ward/zone."""
-    from services.AIFormFilling.src.db.connection import get_database as get_grievance_db
-    gdb = get_grievance_db()
-
-    start_date = datetime.utcnow() - timedelta(days=days)
+    """Time-series complaint trends via in-memory grouping."""
+    db = get_nagpur_db()
+    g_col = db.collection("grievance_forms")
     
-    match_stage = {"created_at": {"$gte": start_date}}
+    start_date = datetime.now(timezone.utc) - timedelta(days=days)
+    
+    query = g_col.where("created_at", ">=", start_date)
     if ward_id:
-        match_stage["ward_id"] = ward_id
+        query = query.where("ward_id", "==", ward_id)
     if zone_id:
-        match_stage["zone_id"] = zone_id
+        query = query.where("zone_id", "==", zone_id)
 
-    if group_by == "day":
-        date_format = "%Y-%m-%d"
-    elif group_by == "week":
-        date_format = "%Y-W%V"
-    else:
-        date_format = "%Y-%m"
-
-    pipeline = [
-        {"$match": match_stage},
-        {"$group": {
-            "_id": {
-                "period": {"$dateToString": {"format": date_format, "date": "$created_at"}},
-                "category": "$category"
-            },
-            "count": {"$sum": 1}
-        }},
-        {"$sort": {"_id.period": 1}}
-    ]
-
-    # Collect by period and category
     trend_map = {}
     categories_set = set()
-    async for doc in gdb.grievance_forms.aggregate(pipeline):
-        period = doc["_id"]["period"]
-        category = doc["_id"].get("category") or "Unknown"
+    docs = query.stream()
+    
+    async for doc in docs:
+        data = doc.to_dict()
+        dt = data.get("created_at")
+        if not dt: continue
+        
+        # Format date for grouping
+        if group_by == "day":
+            period = dt.strftime("%Y-%m-%d")
+        elif group_by == "week":
+            period = dt.strftime("%Y-W%V")
+        else:
+            period = dt.strftime("%Y-%m")
+            
+        category = data.get("category") or "Unknown"
         categories_set.add(category)
+        
         if period not in trend_map:
-            trend_map[period] = {"period": period}
-        trend_map[period][category] = doc["count"]
-        trend_map[period]["total"] = trend_map[period].get("total", 0) + doc["count"]
+            trend_map[period] = {"period": period, "total": 0}
+        
+        trend_map[period][category] = trend_map[period].get(category, 0) + 1
+        trend_map[period]["total"] += 1
 
-    # Also get total per period (no category split)
-    total_pipeline = [
-        {"$match": match_stage},
-        {"$group": {
-            "_id": {"$dateToString": {"format": date_format, "date": "$created_at"}},
-            "count": {"$sum": 1}
-        }},
-        {"$sort": {"_id": 1}}
-    ]
-
-    totals = []
-    async for doc in gdb.grievance_forms.aggregate(total_pipeline):
-        totals.append({"period": doc["_id"], "count": doc["count"]})
+    # Format for response
+    sorted_periods = sorted(trend_map.keys())
+    trends = [trend_map[p] for p in sorted_periods]
+    
+    totals = [{"period": p, "count": trend_map[p]["total"]} for p in sorted_periods]
 
     return {
-        "trends": list(trend_map.values()),
+        "trends": trends,
         "totals": totals,
         "categories": sorted(categories_set),
         "days": days,
         "group_by": group_by,
     }
 
-
 @router.get("/category-distribution")
 async def get_category_distribution(ward_id: Optional[str] = None, zone_id: Optional[str] = None):
-    """Distribution of complaints by category."""
-    from services.AIFormFilling.src.db.connection import get_database as get_grievance_db
-    gdb = get_grievance_db()
-
-    match_stage = {}
+    """Distribution of complaints by category via in-memory count."""
+    db = get_nagpur_db()
+    query = db.collection("grievance_forms")
     if ward_id:
-        match_stage["ward_id"] = ward_id
+        query = query.where("ward_id", "==", ward_id)
     if zone_id:
-        match_stage["zone_id"] = zone_id
+        query = query.where("zone_id", "==", zone_id)
 
-    pipeline = [
-        {"$match": match_stage} if match_stage else {"$match": {}},
-        {"$group": {"_id": "$category", "count": {"$sum": 1}}},
-        {"$sort": {"count": -1}}
-    ]
+    cat_counts = {}
+    total = 0
+    docs = query.stream()
+    async for doc in docs:
+        cat = doc.to_dict().get("category") or "Unknown"
+        cat_counts[cat] = cat_counts.get(cat, 0) + 1
+        total += 1
 
     distribution = []
-    total = 0
-    async for doc in gdb.grievance_forms.aggregate(pipeline):
-        cat = doc["_id"] or "Unknown"
-        distribution.append({"category": cat, "count": doc["count"]})
-        total += doc["count"]
-
-    # Add percentages
-    for d in distribution:
-        d["percentage"] = round((d["count"] / total * 100), 1) if total > 0 else 0
-
+    for cat, count in cat_counts.items():
+        distribution.append({
+            "category": cat,
+            "count": count,
+            "percentage": round((count / total * 100), 1) if total > 0 else 0
+        })
+    
+    distribution.sort(key=lambda x: x["count"], reverse=True)
     return {"distribution": distribution, "total": total}
-
 
 @router.get("/zone-summary")
 async def get_zone_summary():
-    """Aggregate complaint stats per zone."""
-    from services.AIFormFilling.src.db.connection import get_database as get_grievance_db
-    gdb = get_grievance_db()
+    """Aggregate complaint stats per zone via in-memory joining."""
     db = get_nagpur_db()
+    
+    # 1. Get zone info from wards
+    zone_info = {}
+    wdocs = db.collection("wards").stream()
+    async for wdoc in wdocs:
+        data = wdoc.to_dict()
+        zid = data.get("zone_id")
+        if not zid: continue
+        if zid not in zone_info:
+            zone_info[zid] = {
+                "zone_id": zid,
+                "zone_name": data.get("zone"),
+                "ward_count": 0,
+                "total_population": 0,
+                "complaint_count": 0,
+                "open_count": 0,
+                "resolved_count": 0
+            }
+        zi = zone_info[zid]
+        zi["ward_count"] += 1
+        zi["total_population"] += data.get("population", 0)
 
-    pipeline = [
-        {"$match": {"zone_id": {"$ne": None, "$exists": True}}},
-        {"$group": {
-            "_id": "$zone_id",
-            "complaint_count": {"$sum": 1},
-            "open_count": {"$sum": {"$cond": [{"$in": ["$status", ["submitted", "assigned", "in_progress", "Assigned"]]}, 1, 0]}},
-            "resolved_count": {"$sum": {"$cond": [{"$in": ["$status", ["resolved", "closed", "confirmed", "Resolved"]]}, 1, 0]}},
-        }},
-        {"$sort": {"complaint_count": -1}}
-    ]
+    # 2. Get complaint stats from grievance_forms
+    gdocs = db.collection("grievance_forms").stream()
+    async for gdoc in gdocs:
+        data = gdoc.to_dict()
+        # Prefer zone_id on grievance; fallback to deriving from ward_id if we have it?
+        # For simplicity, we use zone_id field
+        zid = data.get("zone_id")
+        if zid and zid in zone_info:
+            zi = zone_info[zid]
+            zi["complaint_count"] += 1
+            status = (data.get("status") or "").lower()
+            if status in ["submitted", "assigned", "in_progress", "assigned", "in progress"]:
+                zi["open_count"] += 1
+            elif status in ["resolved", "closed", "confirmed", "resolved"]:
+                zi["resolved_count"] += 1
 
-    zone_complaints = {}
-    async for doc in gdb.grievance_forms.aggregate(pipeline):
-        zone_complaints[doc["_id"]] = doc
-
-    # Get zone info
-    zone_pipeline = [
-        {"$group": {
-            "_id": "$zone_id",
-            "zone_name": {"$first": "$zone"},
-            "ward_count": {"$sum": 1},
-            "total_population": {"$sum": {"$ifNull": ["$population", 0]}},
-        }},
-        {"$sort": {"_id": 1}}
-    ]
-
-    zones = []
-    async for zone in db.wards.aggregate(zone_pipeline):
-        zid = zone["_id"]
-        stats = zone_complaints.get(zid, {"complaint_count": 0, "open_count": 0, "resolved_count": 0})
-        zones.append({
-            "zone_id": zid,
-            "zone_name": zone["zone_name"],
-            "ward_count": zone["ward_count"],
-            "total_population": zone["total_population"],
-            "complaint_count": stats.get("complaint_count", 0),
-            "open_count": stats.get("open_count", 0),
-            "resolved_count": stats.get("resolved_count", 0),
-        })
-
-    return {"zones": zones}
-
+    return {"zones": list(zone_info.values())}
 
 @router.get("/correlations")
 async def get_correlations():
-    """Cross-dataset correlation: water supply hours vs complaint count per ward."""
-    from services.AIFormFilling.src.db.connection import get_database as get_grievance_db
-    gdb = get_grievance_db()
+    """Cross-dataset correlation via in-memory ward-joining."""
     db = get_nagpur_db()
+    
+    # We'll map all data by ward_id
+    ward_map = {}
+    
+    # Wards
+    wdocs = db.collection("wards").stream()
+    async for wdoc in wdocs:
+        data = wdoc.to_dict()
+        ward_map[wdoc.id] = {
+            "ward_id": wdoc.id,
+            "ward_name": data.get("ward_name"),
+            "population": data.get("population", 0),
+            "complaint_count": 0,
+            "avg_water_supply_hours": None,
+            "avg_sanitation_score": None
+        }
 
-    # Complaint counts per ward
-    complaint_pipeline = [
-        {"$match": {"ward_id": {"$ne": None}}},
-        {"$group": {"_id": "$ward_id", "complaint_count": {"$sum": 1}}}
-    ]
-    ward_complaints = {}
-    async for doc in gdb.grievance_forms.aggregate(complaint_pipeline):
-        ward_complaints[doc["_id"]] = doc["complaint_count"]
+    # Complaints
+    gdocs = db.collection("grievance_forms").stream()
+    async for gdoc in gdocs:
+        wid = gdoc.to_dict().get("ward_id")
+        if wid in ward_map:
+            ward_map[wid]["complaint_count"] += 1
 
-    # Water supply avg hours per ward
-    water_pipeline = [
-        {"$match": {"ward_id": {"$ne": None}, "supply_hours_per_day": {"$ne": None}}},
-        {"$group": {"_id": "$ward_id", "avg_supply_hours": {"$avg": "$supply_hours_per_day"}}}
-    ]
-    ward_water = {}
-    async for doc in db.water_supply_data.aggregate(water_pipeline):
-        ward_water[doc["_id"]] = round(doc["avg_supply_hours"], 1)
+    # Water
+    w_snap = db.collection("water_supply_data").stream()
+    # Need to average manually
+    water_sums = {}
+    async for doc in w_snap:
+        data = doc.to_dict()
+        wid = data.get("ward_id")
+        val = data.get("supply_hours_per_day")
+        if wid and val is not None:
+            if wid not in water_sums: water_sums[wid] = []
+            water_sums[wid].append(val)
+    for wid, vals in water_sums.items():
+        if wid in ward_map:
+            ward_map[wid]["avg_water_supply_hours"] = round(sum(vals) / len(vals), 1)
 
-    # Sanitation scores per ward
-    sanitation_pipeline = [
-        {"$match": {"ward_id": {"$ne": None}, "swachh_bharat_score": {"$ne": None}}},
-        {"$group": {"_id": "$ward_id", "avg_sanitation_score": {"$avg": "$swachh_bharat_score"}}}
-    ]
-    ward_sanitation = {}
-    async for doc in db.sanitation_data.aggregate(sanitation_pipeline):
-        ward_sanitation[doc["_id"]] = round(doc["avg_sanitation_score"], 1)
+    # Sanitation
+    s_snap = db.collection("sanitation_data").stream()
+    san_sums = {}
+    async for doc in s_snap:
+        data = doc.to_dict()
+        wid = data.get("ward_id")
+        score = data.get("swachh_bharat_score")
+        if wid and score is not None:
+            if wid not in san_sums: san_sums[wid] = []
+            san_sums[wid].append(score)
+    for wid, vals in san_sums.items():
+        if wid in ward_map:
+            ward_map[wid]["avg_sanitation_score"] = round(sum(vals) / len(vals), 1)
 
-    # Build scatter data
-    scatter_data = []
-    async for ward in db.wards.find({}):
-        wid = ward["_id"]
-        scatter_data.append({
-            "ward_id": wid,
-            "ward_name": ward["ward_name"],
-            "complaint_count": ward_complaints.get(wid, 0),
-            "avg_water_supply_hours": ward_water.get(wid),
-            "avg_sanitation_score": ward_sanitation.get(wid),
-            "population": ward.get("population", 0),
-        })
-
-    return {"scatter_data": scatter_data}
-
+    return {"scatter_data": list(ward_map.values())}
 
 @router.get("/overview")
 async def get_analytics_overview():
-    """High-level overview stats for the analytics dashboard."""
-    from services.AIFormFilling.src.db.connection import get_database as get_grievance_db
-    gdb = get_grievance_db()
+    """High-level overview stats using Firestore count aggregations."""
     db = get_nagpur_db()
+    g_col = db.collection("grievance_forms")
+    
+    total_snap = await g_col.count().get()
+    total_complaints = total_snap[0].value
+    
+    open_snap = await g_col.where("status", "in", ["submitted", "assigned", "in_progress", "Assigned", "In Progress", "draft"]).count().get()
+    open_complaints = open_snap[0].value
+    
+    resolved_snap = await g_col.where("status", "in", ["resolved", "closed", "confirmed", "Resolved"]).count().get()
+    resolved_complaints = resolved_snap[0].value
+    
+    total_wards = (await db.collection("wards").count().get())[0].value
+    water_records = (await db.collection("water_supply_data").count().get())[0].value
+    sanitation_records = (await db.collection("sanitation_data").count().get())[0].value
 
-    total_complaints = await gdb.grievance_forms.count_documents({})
-    open_complaints = await gdb.grievance_forms.count_documents({
-        "status": {"$in": ["submitted", "assigned", "in_progress", "Assigned", "In Progress", "draft"]}
-    })
-    resolved_complaints = await gdb.grievance_forms.count_documents({
-        "status": {"$in": ["resolved", "closed", "confirmed", "Resolved"]}
-    })
-    total_wards = await db.wards.count_documents({})
-    water_records = await db.water_supply_data.count_documents({})
-    sanitation_records = await db.sanitation_data.count_documents({})
-
-    # Most complained ward
-    worst_ward_pipeline = [
-        {"$match": {"ward_id": {"$ne": None}}},
-        {"$group": {"_id": "$ward_id", "count": {"$sum": 1}}},
-        {"$sort": {"count": -1}},
-        {"$limit": 1}
-    ]
+    # Most complained ward via manual stream count
+    ward_counts = {}
+    docs = g_col.stream()
+    async for doc in docs:
+        wid = doc.to_dict().get("ward_id")
+        if wid:
+            ward_counts[wid] = ward_counts.get(wid, 0) + 1
+            
     worst_ward = None
-    async for doc in gdb.grievance_forms.aggregate(worst_ward_pipeline):
-        ward_info = await db.wards.find_one({"_id": doc["_id"]})
-        if ward_info:
-            worst_ward = {"ward_id": doc["_id"], "ward_name": ward_info["ward_name"], "count": doc["count"]}
+    if ward_counts:
+        worst_wid = max(ward_counts, key=ward_counts.get)
+        w_doc = await db.collection("wards").document(worst_wid).get()
+        if w_doc.exists:
+            worst_ward = {
+                "ward_id": worst_wid,
+                "ward_name": w_doc.to_dict().get("ward_name"),
+                "count": ward_counts[worst_wid]
+            }
 
     return {
         "total_complaints": total_complaints,
@@ -356,139 +355,57 @@ async def get_analytics_overview():
         "worst_ward": worst_ward,
     }
 
-
 @router.get("/dataset-insights")
 async def get_dataset_insights():
-    """Aggregate imported CSV dataset records by zone/ward for visualization.
-    This shows data even when no complaints have been submitted."""
+    """Aggregate dataset records manually for insights."""
     db = get_nagpur_db()
+    
+    # Helper for counting by field
+    async def count_by_zone(coll_name):
+        counts = {}
+        docs = db.collection(coll_name).stream()
+        async for doc in docs:
+            zid = doc.to_dict().get("zone_id")
+            if zid:
+                counts[zid] = counts.get(zid, 0) + 1
+        return [{"zone_id": z, "record_count": c} for z, c in counts.items()]
 
-    # Sanitation records per zone
-    san_zone_pipeline = [
-        {"$match": {"zone_id": {"$ne": None}}},
-        {"$group": {
-            "_id": "$zone_id",
-            "record_count": {"$sum": 1},
-        }},
-        {"$sort": {"record_count": -1}}
-    ]
-    sanitation_by_zone = []
-    async for doc in db.sanitation_data.aggregate(san_zone_pipeline):
-        sanitation_by_zone.append({"zone_id": doc["_id"], "record_count": doc["record_count"]})
+    sanitation_by_zone = await count_by_zone("sanitation_data")
+    civic_by_zone = await count_by_zone("civic_metrics")
+    water_by_zone = await count_by_zone("water_supply_data")
 
-    # Sanitation records per ward
-    san_ward_pipeline = [
-        {"$match": {"ward_id": {"$ne": None}}},
-        {"$group": {
-            "_id": "$ward_id",
-            "record_count": {"$sum": 1},
-        }},
-        {"$sort": {"record_count": -1}}
-    ]
-    sanitation_by_ward = {}
-    async for doc in db.sanitation_data.aggregate(san_ward_pipeline):
-        sanitation_by_ward[doc["_id"]] = doc["record_count"]
-
-    # Civic metrics per zone
-    civic_zone_pipeline = [
-        {"$match": {"zone_id": {"$ne": None}}},
-        {"$group": {
-            "_id": "$zone_id",
-            "record_count": {"$sum": 1},
-        }},
-        {"$sort": {"record_count": -1}}
-    ]
-    civic_by_zone = []
-    async for doc in db.civic_metrics.aggregate(civic_zone_pipeline):
-        civic_by_zone.append({"zone_id": doc["_id"], "record_count": doc["record_count"]})
-
-    # Water supply per zone
-    water_zone_pipeline = [
-        {"$match": {"zone_id": {"$ne": None}}},
-        {"$group": {
-            "_id": "$zone_id",
-            "record_count": {"$sum": 1},
-        }},
-        {"$sort": {"record_count": -1}}
-    ]
-    water_by_zone = []
-    async for doc in db.water_supply_data.aggregate(water_zone_pipeline):
-        water_by_zone.append({"zone_id": doc["_id"], "record_count": doc["record_count"]})
-
-    # Ward-level dataset records for heatmap
-    ward_dataset_counts = {}
-    for collection_name in ["sanitation_data", "water_supply_data", "civic_metrics"]:
-        pipeline = [
-            {"$match": {"ward_id": {"$ne": None}}},
-            {"$group": {"_id": "$ward_id", "count": {"$sum": 1}}}
-        ]
-        async for doc in db[collection_name].aggregate(pipeline):
-            wid = doc["_id"]
-            ward_dataset_counts[wid] = ward_dataset_counts.get(wid, 0) + doc["count"]
-
-    # Build ward dataset heatmap with ward info
-    max_count = max(ward_dataset_counts.values()) if ward_dataset_counts else 1
-    ward_dataset_heatmap = []
-    async for ward in db.wards.find({}).sort("ward_number", 1):
-        wid = ward["_id"]
-        count = ward_dataset_counts.get(wid, 0)
-        ward_dataset_heatmap.append({
-            "ward_id": wid,
-            "ward_name": ward["ward_name"],
-            "ward_number": ward["ward_number"],
-            "zone": ward["zone"],
-            "zone_id": ward["zone_id"],
+    # Ward-level heatmap counts
+    ward_counts = {}
+    for col in ["sanitation_data", "water_supply_data", "civic_metrics"]:
+        docs = db.collection(col).stream()
+        async for doc in docs:
+            wid = doc.to_dict().get("ward_id")
+            if wid:
+                ward_counts[wid] = ward_counts.get(wid, 0) + 1
+                
+    max_count = max(ward_counts.values()) if ward_counts else 1
+    ward_heatmap = []
+    w_docs = db.collection("wards").order_by("ward_number").stream()
+    async for wdoc in w_docs:
+        ward = wdoc.to_dict()
+        count = ward_counts.get(wdoc.id, 0)
+        ward_heatmap.append({
+            "ward_id": wdoc.id,
+            "ward_name": ward.get("ward_name"),
+            "ward_number": ward.get("ward_number"),
+            "zone": ward.get("zone"),
+            "zone_id": ward.get("zone_id"),
             "dataset_records": count,
-            "intensity": round(count / max(max_count, 1), 2),
+            "intensity": round(count / max_count, 2),
             "population": ward.get("population", 0),
-        })
-
-    # Zone-level summary with dataset counts
-    zone_lookup = {}
-    async for ward in db.wards.aggregate([
-        {"$group": {"_id": "$zone_id", "zone_name": {"$first": "$zone"}, "ward_count": {"$sum": 1}}}
-    ]):
-        zone_lookup[ward["_id"]] = ward["zone_name"]
-
-    zone_dataset_summary = []
-    # Merge all collections per zone
-    all_zone_ids = set()
-    zone_totals = {}
-    for collection_name in ["sanitation_data", "water_supply_data", "civic_metrics"]:
-        async for doc in db[collection_name].aggregate([
-            {"$match": {"zone_id": {"$ne": None}}},
-            {"$group": {"_id": "$zone_id", "count": {"$sum": 1}}}
-        ]):
-            zid = doc["_id"]
-            all_zone_ids.add(zid)
-            if zid not in zone_totals:
-                zone_totals[zid] = {"sanitation": 0, "water": 0, "civic": 0, "total": 0}
-            if collection_name == "sanitation_data":
-                zone_totals[zid]["sanitation"] = doc["count"]
-            elif collection_name == "water_supply_data":
-                zone_totals[zid]["water"] = doc["count"]
-            else:
-                zone_totals[zid]["civic"] = doc["count"]
-            zone_totals[zid]["total"] += doc["count"]
-
-    for zid in sorted(all_zone_ids):
-        t = zone_totals.get(zid, {})
-        zone_dataset_summary.append({
-            "zone_id": zid,
-            "zone_name": zone_lookup.get(zid, zid),
-            "sanitation_records": t.get("sanitation", 0),
-            "water_records": t.get("water", 0),
-            "civic_records": t.get("civic", 0),
-            "total_records": t.get("total", 0),
         })
 
     return {
         "sanitation_by_zone": sanitation_by_zone,
         "civic_by_zone": civic_by_zone,
         "water_by_zone": water_by_zone,
-        "ward_dataset_heatmap": ward_dataset_heatmap,
-        "zone_dataset_summary": zone_dataset_summary,
-        "total_sanitation": await db.sanitation_data.count_documents({}),
-        "total_water": await db.water_supply_data.count_documents({}),
-        "total_civic": await db.civic_metrics.count_documents({}),
+        "ward_dataset_heatmap": ward_heatmap,
+        "total_sanitation": (await db.collection("sanitation_data").count().get())[0].value,
+        "total_water": (await db.collection("water_supply_data").count().get())[0].value,
+        "total_civic": (await db.collection("civic_metrics").count().get())[0].value,
     }

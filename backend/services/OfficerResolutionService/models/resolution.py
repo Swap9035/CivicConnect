@@ -1,6 +1,5 @@
 from typing import Optional, List, Dict, Any
 from datetime import datetime
-from bson import ObjectId
 from pydantic import BaseModel, Field
 from enum import Enum
 
@@ -49,7 +48,6 @@ class ResolutionRecord(BaseModel):
 
     class Config:
         populate_by_name = True
-        json_encoders = {ObjectId: str}
 
 class ClarificationRequest(BaseModel):
     id: Optional[str] = Field(None, alias="_id")
@@ -63,4 +61,3 @@ class ClarificationRequest(BaseModel):
     
     class Config:
         populate_by_name = True
-        json_encoders = {ObjectId: str}

@@ -73,22 +73,21 @@ class SmartRoutingAgent:
         """
         try:
             db = get_superuser_db()  # Synchronous call
-            collection = db.staff_users
+            collection = db.collection("staff_users")
 
-            # Build base query
-            query = {
-                "role": "NODAL_OFFICER",
-                "metadata.dept": department
-            }
-
-            # Add fuzzy ward match if provided (case-insensitive partial match)
-            if area_ward_name and area_ward_name.strip():
-                ward_term = area_ward_name.strip()
-                ward_regex = {"$regex": f".*{re.escape(ward_term)}.*", "$options": "i"}
-                query["metadata.ward"] = ward_regex
-
-            # Query for nodal officer with matching dept and (fuzzy) ward
-            officer_doc = await collection.find_one(query)
+            # In Firestore, we query by role and dept, then filter ward in memory
+            docs = collection.where("role", "==", "NODAL_OFFICER").where("metadata.dept", "==", department).stream()
+            
+            ward_term = (area_ward_name or "").strip().lower()
+            officer_doc = None
+            
+            async for doc in docs:
+                data = doc.to_dict()
+                ward = data.get("metadata", {}).get("ward", "").lower()
+                if not ward_term or ward_term in ward:
+                    officer_doc = data
+                    officer_doc["_id"] = doc.id
+                    break
 
             if officer_doc:
                 return {

@@ -1,51 +1,35 @@
-from motor.motor_asyncio import AsyncIOMotorClient
+from shared.firebase_client import get_firestore_client
 from services.superuser_services.config import settings
 import logging
 
 logger = logging.getLogger(__name__)
 
-class MongoDB:
-    client: AsyncIOMotorClient = None
+class FirestoreDB:
+    client = None
     database = None
 
-mongodb = MongoDB()
+mongodb = FirestoreDB()
 
 async def connect_to_mongo():
-    """Create database connection"""
+    """Create database connection (Using Firestore instead)"""
     try:
-        mongodb.client = AsyncIOMotorClient(settings.mongo_uri)
-        mongodb.database = mongodb.client[settings.database_name]
+        # Load from shared firebase client
+        db = get_firestore_client()
+        mongodb.database = db
+        mongodb.client = db
         
-        # Test connection
-        await mongodb.client.admin.command('ping')
-        logger.info(f"Connected to MongoDB at {settings.mongo_uri}")
-        
-        # Create indexes
-        await create_indexes()
+        logger.info(f"Connected to Firestore instead of MongoDB")
         
     except Exception as e:
-        logger.error(f"Failed to connect to MongoDB: {e}")
+        logger.error(f"Failed to connect to Firestore: {e}")
         raise
 
 async def close_mongo_connection():
-    """Close database connection"""
-    if mongodb.client:
-        mongodb.client.close()
-        logger.info("Disconnected from MongoDB")
-
-async def create_indexes():
-    """Create database indexes for better performance"""
-    staff_collection = mongodb.database.staff_users
-    
-    # Create unique indexes
-    await staff_collection.create_index("email", unique=True)
-    await staff_collection.create_index("employee_id", unique=True)
-    
-    # Create compound indexes
-    await staff_collection.create_index([("metadata.dept", 1), ("metadata.ward", 1)])
-    await staff_collection.create_index("role")
-    
-    logger.info("Database indexes created successfully")
+    """Close database connection (No-op in Firestore)"""
+    logger.info("Disconnected from Firestore (No-op)")
 
 def get_database():
+    if mongodb.database is None:
+        mongodb.database = get_firestore_client()
     return mongodb.database
+

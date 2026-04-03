@@ -3,6 +3,83 @@ import { authAPI } from "../services/api";
 
 const AuthContext = createContext(null);
 
+// ──────────────────────────────────────────────
+// DUMMY TEST CREDENTIALS (bypass backend entirely)
+// ──────────────────────────────────────────────
+const DUMMY_ACCOUNTS = {
+  // Citizen — use mobile_number to login
+  citizen: {
+    identifier: "9876543210",
+    password: "Password@123",
+    token: "dummy-citizen-token-xyz",
+    userType: "citizen",
+    profile: {
+      id: "c_dummy_001",
+      full_name: "Citizen Test",
+      mobile_number: "9876543210",
+      residential_address: "123 Main St, Nagpur",
+      email: "citizen.test@example.com",
+      language_preference: "English",
+    },
+  },
+  // Admin — use email to login
+  admin: {
+    identifier: "superadmin@gov.in",
+    password: "TempAdmin@123",
+    token: "dummy-admin-token-xyz",
+    userType: "staff",
+    profile: {
+      staff_id: "SUPER_ADMIN_001",
+      full_name: "System SuperAdmin",
+      employee_id: "SUPER_ADMIN_001",
+      email: "superadmin@gov.in",
+      phone_number: "+911234567890",
+      role: "SUPER_ADMIN",
+      metadata: {
+        dept: "ELECTRICITY",
+        ward: "System",
+        designation: "System Administrator",
+      },
+      account_status: { is_active: true, is_first_login: false },
+    },
+  },
+  // Officer — use email to login
+  officer: {
+    identifier: "rahul.sharma@gov.in",
+    password: "Officer@123",
+    token: "dummy-officer-token-xyz",
+    userType: "staff",
+    profile: {
+      staff_id: "STF_OFF_001",
+      full_name: "Rahul Sharma",
+      employee_id: "ELEC_OFF_001",
+      email: "rahul.sharma@gov.in",
+      phone_number: "+911234567892",
+      role: "NODAL_OFFICER",
+      metadata: {
+        dept: "ELECTRICITY",
+        ward: "Shanti Nagar",
+        designation: "Junior Engineer",
+      },
+      account_status: { is_active: true, is_first_login: false },
+    },
+  },
+};
+
+/** Check if a login attempt matches any dummy account */
+function matchDummy(identifier, password, isStaff) {
+  for (const account of Object.values(DUMMY_ACCOUNTS)) {
+    if (
+      account.identifier === identifier &&
+      account.password === password &&
+      (isStaff ? account.userType === "staff" : account.userType === "citizen")
+    ) {
+      return account;
+    }
+  }
+  return null;
+}
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,6 +94,17 @@ export const AuthProvider = ({ children }) => {
       const savedToken = localStorage.getItem("access_token");
       const savedUserType = localStorage.getItem("user_type") || "citizen";
       if (savedToken) {
+        // If the token is one of our dummy tokens, restore from DUMMY_ACCOUNTS
+        const dummyMatch = Object.values(DUMMY_ACCOUNTS).find(
+          (a) => a.token === savedToken
+        );
+        if (dummyMatch) {
+          setUser(dummyMatch.profile);
+          setUserType(dummyMatch.userType);
+          setLoading(false);
+          return;
+        }
+
         try {
           let response;
           if (savedUserType === "staff") {
@@ -40,6 +128,18 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (identifier, password, isStaff = false) => {
+    // ── Try dummy credentials first ──
+    const dummy = matchDummy(identifier, password, isStaff);
+    if (dummy) {
+      localStorage.setItem("access_token", dummy.token);
+      localStorage.setItem("user_type", dummy.userType);
+      setToken(dummy.token);
+      setUser(dummy.profile);
+      setUserType(dummy.userType);
+      return { success: true };
+    }
+
+    // ── Fall back to real API ──
     try {
       let response;
 

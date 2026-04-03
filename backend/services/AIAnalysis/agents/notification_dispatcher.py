@@ -132,8 +132,18 @@ class NotificationDispatcherAgent:
 
             # Get grievance doc
             gdb = get_grievance_db()
-            gcol = gdb.grievance_forms
-            grievance_doc = await gcol.find_one({"_id": grievance_id}) or await gcol.find_one({"form_id": grievance_id})
+            gcol = gdb.collection("grievance_forms")
+            
+            grievance_doc = None
+            doc_ref = await gcol.document(grievance_id).get()
+            if doc_ref.exists:
+                grievance_doc = doc_ref.to_dict()
+            else:
+                docs = gcol.where("form_id", "==", grievance_id).limit(1).stream()
+                async for doc in docs:
+                    grievance_doc = doc.to_dict()
+                    break
+
             if not grievance_doc:
                 logger.info("No grievance found for id %s", grievance_id)
                 return None
@@ -145,8 +155,18 @@ class NotificationDispatcherAgent:
 
             # Get user email
             udb = get_user_db()
-            ucol = udb.users
-            user_doc = await ucol.find_one({"_id": user_id}) or await ucol.find_one({"user_id": user_id})
+            ucol = udb.collection("users")
+            
+            user_doc = None
+            doc_ref = await ucol.document(user_id).get()
+            if doc_ref.exists:
+                user_doc = doc_ref.to_dict()
+            else:
+                docs = ucol.where("user_id", "==", user_id).limit(1).stream()
+                async for doc in docs:
+                    user_doc = doc.to_dict()
+                    break
+
             if not user_doc:
                 logger.info("No user found for user_id %s", user_id)
                 return None
@@ -235,12 +255,22 @@ class NotificationDispatcherAgent:
                 return None
 
             db = get_superuser_db()
-            col = db.staff_users
-            doc = await col.find_one({"_id": officer_id}) or await col.find_one({"officer_id": officer_id})
-            if not doc:
+            col = db.collection("staff_users")
+            
+            doc_data = None
+            doc_ref = await col.document(officer_id).get()
+            if doc_ref.exists:
+                doc_data = doc_ref.to_dict()
+            else:
+                docs = col.where("officer_id", "==", officer_id).limit(1).stream()
+                async for doc in docs:
+                    doc_data = doc.to_dict()
+                    break
+
+            if not doc_data:
                 return None
             # Try common fields for email
-            return doc.get("email") or doc.get("contact", {}).get("email")
+            return doc_data.get("email") or doc_data.get("contact", {}).get("email")
         except Exception:
             logger.exception("Error fetching officer email for %s", officer_id)
             return None

@@ -1,31 +1,28 @@
+from shared.firebase_client import get_firestore_client
 import os
-from motor.motor_asyncio import AsyncIOMotorClient
-from dotenv import load_dotenv
 
-load_dotenv()
-
-MONGO_URI = os.getenv("MONGO_URI")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "grievance_db")
 
-client: AsyncIOMotorClient = None
+client = None
 
 async def connect_to_mongo():
     global client
-    client = AsyncIOMotorClient(MONGO_URI)
-    print("Connected to MongoDB")
+    client = get_firestore_client()
+    print("Connected to Firestore (AIFormFilling)")
 
 async def close_mongo_connection():
     global client
-    if client:
-        client.close()
-        print("Closed MongoDB connection")
+    print("Closed Firestore connection (No-op)")
 
 def get_database():
-    return client[DATABASE_NAME]
+    # If not connected yet (async calls vs sync), grab global shared client
+    if client is None:
+        return get_firestore_client()
+    return client
 
 def get_collection(collection_name: str):
-    return get_database()[collection_name]
+    return get_database().collection(collection_name)
 
 def get_grievance_collection():
     """Get the grievance forms collection"""
-    return get_collection("grievance_forms")  # Assuming the collection is named "grievance_forms"
+    return get_collection("grievance_forms")

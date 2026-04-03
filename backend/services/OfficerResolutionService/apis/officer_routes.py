@@ -9,8 +9,10 @@ from ...superuser_services.utils.auth import get_current_user, require_role
 import logging
 import os
 import asyncio
-import pymongo
-from bson import ObjectId
+from shared.firebase_client import get_firestore_client
+import logging
+import os
+import asyncio
 
 router = APIRouter(prefix="/officer", tags=["Officer Resolution"])
 
@@ -322,37 +324,25 @@ async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "service": "OfficerResolutionService"}
 
-def _sync_find_user_email(user_id: str):
-    """Synchronous DB lookup for a user's email; run in a thread via asyncio.to_thread."""
-    mongo_uri = os.getenv("MONGO_URI") or os.getenv("MONGO_CONNECTION_STRING")
-    mongo_db = os.getenv("MONGO_DB", "admin")
-    if not mongo_uri:
-        raise RuntimeError("MONGO_URI not configured")
-
-    client = pymongo.MongoClient(mongo_uri)
-    try:
-        db = client[mongo_db]
-        # try common collections and id fields
-        for col_name in ("users", "user_profiles", "citizens"):
-            col = db.get_collection(col_name)
-            queries = [{"sub": user_id}, {"user_id": user_id}, {"id": user_id}]
-            try:
-                queries.append({"_id": ObjectId(user_id)})
-            except Exception:
-                pass
-            for q in queries:
-                doc = col.find_one(q)
-                if doc:
-                    for f in ("email", "user_email", "email_primary", "contact_email"):
-                        if doc.get(f):
-                            return doc.get(f)
-        return None
-    finally:
-        client.close()
-
 async def _fetch_user_email_by_id(user_id: str):
+    """Async Firestore lookup for a user's email."""
     try:
-        return await asyncio.to_thread(_sync_find_user_email, user_id)
-    except Exception as e:
-        logger.exception(f"Error fetching user email from userdb for {user_id}: {e}")
+        db = get_firestore_client()
+        # Find user across users collection
+        # Firestore queries by user_id or doc ID
+        user_ref = db.collection("users").document(user_id)
+        doc = await user_ref.get()
+        if doc.exists:
+            data = doc.to_dict()
+            return data.get("email")
+            
+        # Fallback to querying by user_id field
+        docs = db.collection("users").where("user_id", "==", user_id).limit(1).stream()
+        async for doc in docs:
+            return doc.to_dict().get("email")
+            
         return None
+    except Exception as e:
+        logger.exception(f"Error fetching user email from Firestore for {user_id}: {e}")
+        return None
+

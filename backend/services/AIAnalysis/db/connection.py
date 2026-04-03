@@ -1,20 +1,20 @@
-from motor.motor_asyncio import AsyncIOMotorClient
+from shared.firebase_client import get_firestore_client
 from services.AIAnalysis.utils.config import settings
 
 class Database:
-    client: AsyncIOMotorClient = None
+    client = None
     
 db = Database()
 
 def get_database():
     if db.client is None:
-        connect_to_mongo()  # Synchronous call
-    return db.client[settings.DATABASE_NAME]
+        connect_to_mongo()  # Kept name for compatibility
+    return db.client
 
 def connect_to_mongo():
-    db.client = AsyncIOMotorClient(settings.MONGO_URI)
-    print("Connected to MongoDB")
+    db.client = get_firestore_client()
+    print("Connected to Firestore (AIAnalysis)")
 
 def close_mongo_connection():
-    db.client.close()
-    print("Closed MongoDB connection")
+    print("Closed Firestore connection (No-op)")
+

@@ -6,7 +6,6 @@ import shutil
 import json
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
 from pydantic import BaseModel
-from bson import ObjectId
 
 from ..db.connection import get_collection
 from ..agents.form_extraction_agent import FormExtractionAgent
@@ -117,7 +116,7 @@ async def start_grievance_session(
         "updated_at": datetime.utcnow()
     }
     
-    await sessions_collection.insert_one(session_doc)
+    await sessions_collection.document(session_id).set(session_doc)
     
     # Generate response message
     if is_complete:
@@ -148,7 +147,8 @@ async def provide_clarification(request: ClarificationRequest, user_id: str = De
     sessions_collection = get_collection("form_sessions")
     
     # Get existing session
-    session = await sessions_collection.find_one({"session_id": request.session_id})
+    session_doc = await sessions_collection.document(request.session_id).get()
+    session = session_doc.to_dict() if session_doc.exists else None
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     
@@ -202,17 +202,14 @@ async def provide_clarification(request: ClarificationRequest, user_id: str = De
     })
     
     # Update session in database
-    await sessions_collection.update_one(
-        {"session_id": request.session_id},
+    await sessions_collection.document(request.session_id).update(
         {
-            "$set": {
-                "extracted_data": updated_data,
-                "missing_info": still_missing,
-                "clarification_questions": new_questions,
-                "conversation_history": conversation_history,
-                "is_complete": is_complete,
-                "updated_at": datetime.utcnow()
-            }
+            "extracted_data": updated_data,
+            "missing_info": still_missing,
+            "clarification_questions": new_questions,
+            "conversation_history": conversation_history,
+            "is_complete": is_complete,
+            "updated_at": datetime.utcnow()
         }
     )
     
@@ -238,7 +235,8 @@ async def get_session(session_id: str, user_id: str = Depends(get_current_user))
     """Get the current state of a grievance form session."""
     sessions_collection = get_collection("form_sessions")
     
-    session = await sessions_collection.find_one({"session_id": session_id})
+    session_doc = await sessions_collection.document(session_id).get()
+    session = session_doc.to_dict() if session_doc.exists else None
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     
@@ -266,17 +264,18 @@ async def _fetch_user_email_by_id(user_id: str):
         logger.exception(f"Failed to get users collection: {e}")
         return None
 
-    # Try common id-based queries; prefer querying by ObjectId if possible
-    queries = []
-    try:
-        queries.append({"_id": ObjectId(user_id)})
-    except Exception:
-        pass
-    queries.extend([{"user_id": user_id}, {"id": user_id}, {"sub": user_id}, {"mobile_number": user_id}])
+    # Try common id-based queries
+    queries = [{"user_id": user_id}, {"id": user_id}, {"sub": user_id}, {"mobile_number": user_id}]
 
     for q in queries:
         try:
-            u = await users_col.find_one(q)
+            docs = users_col.where(list(q.keys())[0], "==", list(q.values())[0]).limit(1).stream()
+            async for doc in docs:
+                u = doc.to_dict()
+                u["_id"] = doc.id
+                break
+            else:
+                u = None
             if u:
                 for f in ("email", "user_email", "email_primary", "emailAddress"):
                     if u.get(f):
@@ -296,7 +295,8 @@ async def submit_grievance_form(request: FormSubmissionRequest, user_id: str = D
     forms_collection = get_collection("grievance_forms")
     
     # Get session
-    session = await sessions_collection.find_one({"session_id": request.session_id})
+    session_doc = await sessions_collection.document(request.session_id).get()
+    session = session_doc.to_dict() if session_doc.exists else None
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     
@@ -334,17 +334,14 @@ async def submit_grievance_form(request: FormSubmissionRequest, user_id: str = D
     }
     
     # Save to forms collection
-    await forms_collection.insert_one(final_form)
+    await forms_collection.document(form_id).set(final_form)
     
     # Update session with final form reference
-    await sessions_collection.update_one(
-        {"session_id": request.session_id},
+    await sessions_collection.document(request.session_id).update(
         {
-            "$set": {
-                "final_form": form_id,
-                "is_complete": True,
-                "updated_at": datetime.utcnow()
-            }
+            "final_form": form_id,
+            "is_complete": True,
+            "updated_at": datetime.utcnow()
         }
     )
 
@@ -388,7 +385,8 @@ async def get_grievance_form(form_id: str, user_id: str = Depends(get_current_us
     """Get a submitted grievance form by ID."""
     forms_collection = get_collection("grievance_forms")
     
-    form = await forms_collection.find_one({"form_id": form_id})
+    form_doc = await forms_collection.document(form_id).get()
+    form = form_doc.to_dict() if form_doc.exists else None
     if not form:
         raise HTTPException(status_code=404, detail="Form not found")
     
@@ -407,7 +405,10 @@ async def get_all_grievance_forms(user_id: str = Depends(get_current_user)):
     forms_collection = get_collection("grievance_forms")
     
     # Retrieve all forms for the user
-    forms = await forms_collection.find({"user_id": user_id}).to_list(length=None)
+    docs = forms_collection.where("user_id", "==", user_id).stream()
+    forms = []
+    async for doc in docs:
+        forms.append(doc.to_dict())
     
     # Remove MongoDB _id from each form for JSON serialization
     for form in forms:
@@ -420,7 +421,8 @@ async def get_grievance_status(form_id: str, user_id: str = Depends(get_current_
     """Get the status and progress details for a specific grievance (normalized + citizen-friendly)."""
     forms_collection = get_collection("grievance_forms")
     
-    form = await forms_collection.find_one({"form_id": form_id})
+    form_doc = await forms_collection.document(form_id).get()
+    form = form_doc.to_dict() if form_doc.exists else None
     if not form:
         raise HTTPException(status_code=404, detail="Grievance not found")
     

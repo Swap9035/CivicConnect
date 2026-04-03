@@ -5,7 +5,7 @@ import logging
 import asyncio
 from email.message import EmailMessage
 from typing import Optional
-from motor.motor_asyncio import AsyncIOMotorClient
+from shared.firebase_client import get_firestore_client
 
 logger = logging.getLogger(__name__)
 
@@ -19,44 +19,63 @@ class ClarificationNotificationService:
         self.smtp_from = os.getenv("SMTP_FROM", self.smtp_user)
         self.smtp_use_ssl = os.getenv("SMTP_USE_SSL", "false").lower() in ("1", "true", "yes")
         self.smtp_starttls = os.getenv("SMTP_STARTTLS", "true").lower() in ("1", "true", "yes")
-        # Add database connections
-        mongo_uri = os.getenv("MONGO_URI")
-        self.grievance_client = AsyncIOMotorClient(mongo_uri)
-        self.grievance_db = self.grievance_client[os.getenv("DATABASE_NAME", "grievance_db")]
-        self.user_client = AsyncIOMotorClient(mongo_uri)
-        self.user_db = self.user_client["user_db"]
+        self.db = get_firestore_client()
 
     async def get_citizen_email(self, grievance_id: str) -> Optional[str]:
         """Fetch citizen email by querying grievance_forms for user_id, then users for email."""
-        grievance_collection = self.grievance_db["grievance_forms"]
-        grievance = await grievance_collection.find_one({"_id": grievance_id})
-        if not grievance:
-            logger.warning(f"Grievance {grievance_id} not found")
-            return None
-        user_id = grievance.get("user_id")
-        if not user_id:
-            logger.warning(f"No user_id found for grievance {grievance_id}")
-            return None
-        user_collection = self.user_db["users"]
-        user = await user_collection.find_one({"_id": user_id})
-        if not user:
+        try:
+            # Try by document ID first
+            doc_ref = self.db.collection("grievance_forms").document(grievance_id)
+            doc = await doc_ref.get()
+            grievance = doc.to_dict() if doc.exists else None
+            
+            # Fallback to field query
+            if not grievance:
+                docs = self.db.collection("grievance_forms").where("form_id", "==", grievance_id).limit(1).stream()
+                async for d in docs:
+                    grievance = d.to_dict()
+                    break
+                    
+            if not grievance:
+                logger.warning(f"Grievance {grievance_id} not found")
+                return None
+                
+            user_id = grievance.get("user_id")
+            if not user_id:
+                logger.warning(f"No user_id found for grievance {grievance_id}")
+                return None
+                
+            # Try fetching user by user_id
+            user_doc = await self.db.collection("users").document(user_id).get()
+            if user_doc.exists:
+                return user_doc.to_dict().get("email")
+                
+            # Fallback to field query for user
+            user_docs = self.db.collection("users").where("user_id", "==", user_id).limit(1).stream()
+            async for ud in user_docs:
+                return ud.to_dict().get("email")
+                
             logger.warning(f"User {user_id} not found")
             return None
-        return user.get("email")
+        except Exception as e:
+            logger.error(f"Error fetching citizen email: {e}")
+            return None
 
     async def send_clarification_email(
         self,
         grievance_id: str,
         officer_id: str,
         message: str,
-        resolution_id: Optional[str] = None
+        resolution_id: Optional[str] = None,
+        to_email: Optional[str] = None
     ) -> bool:
         """Send clarification email to citizen. Returns True on success, False on failure."""
-        # Fetch email using the procedure
-        to_email = await self.get_citizen_email(grievance_id)
-        if not to_email:
+        # Use provided email or fetch from DB
+        recipient = to_email or await self.get_citizen_email(grievance_id)
+        if not recipient:
             logger.error(f"Could not fetch email for grievance {grievance_id}")
             return False
+            
         subject = f"Clarification requested for grievance {grievance_id}"
         resolution_line = f"Resolution ID: {resolution_id}\n" if resolution_id else ""
         body = f"""Dear Citizen,
@@ -72,14 +91,13 @@ Government Portal Team
 """
 
         if not self.smtp_host or not self.smtp_port:
-            logger.warning("SMTP config missing for clarification service; using simulated send")
-            logger.info(f"Simulated clarification email to {to_email}: {subject}")
+            logger.info(f"Simulated clarification email to {recipient}: {subject}")
             await asyncio.sleep(0.1)
             return True
 
         msg = EmailMessage()
         msg["From"] = self.smtp_from or self.smtp_user or "no-reply@example.com"
-        msg["To"] = to_email
+        msg["To"] = recipient
         msg["Subject"] = subject
         msg.set_content(body)
 
@@ -104,10 +122,11 @@ Government Portal Team
 
         try:
             await asyncio.to_thread(_send)
-            logger.info(f"Clarification email sent to {to_email} for grievance {grievance_id}")
+            logger.info(f"Clarification email sent to {recipient} for grievance {grievance_id}")
             return True
         except Exception as e:
-            logger.error(f"Failed to send clarification email to {to_email}: {e}")
+            logger.error(f"Failed to send clarification email to {recipient}: {e}")
             return False
 
 clarification_notification_service = ClarificationNotificationService()
+

@@ -1,13 +1,12 @@
-from motor.motor_asyncio import AsyncIOMotorClient
+from shared.firebase_client import get_firestore_client
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-MONGO_URL = os.getenv("MONGO_URI", "mongodb://localhost:27017")
-client = AsyncIOMotorClient(MONGO_URL)
-database = client["user_db"]
-user_collection = database["users"]
+db = get_firestore_client()
+user_collection = db.collection("users")
 
 def get_users_collection():
     return user_collection
+

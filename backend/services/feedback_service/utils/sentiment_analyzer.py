@@ -7,14 +7,14 @@ from pydantic import BaseModel
 
 logger = logging.getLogger(__name__)
 
-# New imports for latest LangChain MistralAI
+# New imports for LangChain OpenAI (routed via OpenRouter)
 try:
-    from langchain_mistralai import ChatMistralAI
+    from langchain_openai import ChatOpenAI
     from langchain_core.messages import HumanMessage, SystemMessage
     from langchain_core.output_parsers import PydanticOutputParser
-    _HAS_MISTRAL = True
+    _HAS_LLM = True
 except ImportError:
-    _HAS_MISTRAL = False
+    _HAS_LLM = False
 
 class SentimentOutput(BaseModel):
     label: str
@@ -24,13 +24,13 @@ class SentimentOutput(BaseModel):
 def analyze_sentiment(text: str) -> Dict:
     """
     Return a dict: {"label": "positive"|"neutral"|"negative", "score": float (0..1, higher = more negative), "explanation": str}
-    Uses LangChain MistralAI if available, otherwise a simple heuristic fallback.
+    Uses LangChain ChatOpenAI via OpenRouter if available, otherwise a simple heuristic fallback.
     """
     if not text:
         return {"label": "neutral", "score": 0.5, "explanation": "no text"}
 
     try:
-        if not _HAS_MISTRAL:
+        if not _HAS_LLM:
             # simple fallback heuristic: count negative words relative to text length
             negative_words = ["bad", "poor", "terrible", "worst", "not", "never", "angry", "disappointed", "unhappy"]
             lowered = text.lower()
@@ -39,9 +39,18 @@ def analyze_sentiment(text: str) -> Dict:
             label = "negative" if score > 0.25 else ("positive" if "good" in lowered or "great" in lowered else "neutral")
             return {"label": label, "score": float(score), "explanation": "heuristic fallback (langchain not available)"}
 
-        api_key = os.getenv("MISTRAL_API_KEY")
-        # Instantiate ChatMistralAI
-        llm = ChatMistralAI(api_key=api_key, temperature=0.0)
+        api_key = os.getenv("OPENROUTER_API_KEY")
+        # Instantiate ChatOpenAI via OpenRouter
+        llm = ChatOpenAI(
+            model=os.getenv("OPENROUTER_MODEL", "mistralai/mistral-7b-instruct-v0.1"),
+            openai_api_key=api_key,
+            openai_api_base=os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
+            temperature=0.0,
+            default_headers={
+                "HTTP-Referer": "http://localhost:8000",
+                "X-Title": "CivicConnect AI",
+            },
+        )
 
         # Define output parser
         parser = PydanticOutputParser(pydantic_object=SentimentOutput)
@@ -59,3 +68,4 @@ def analyze_sentiment(text: str) -> Dict:
     except Exception as e:
         logger.exception("Sentiment analysis failed")
         return {"label": "neutral", "score": 0.5, "explanation": f"error: {str(e)}"}
+

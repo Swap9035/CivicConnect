@@ -3,20 +3,30 @@ import base64
 from typing import List, Optional
 import fitz  # PyMuPDF
 from PIL import Image
-from langchain_mistralai import ChatMistralAI
+from langchain_openai import ChatOpenAI
 from services.AIAnalysis.utils.config import settings
 
 class DocumentAnalysisAgent:
     def __init__(self):
-        self.llm = ChatMistralAI(
-            model="mistral-small-latest",  # For text summarization
-            mistral_api_key=settings.MISTRAL_API_KEY,
-            temperature=0.1
+        self.llm = ChatOpenAI(
+            model=settings.OPENROUTER_MODEL,
+            openai_api_key=settings.OPENROUTER_API_KEY,
+            openai_api_base=settings.OPENROUTER_BASE_URL,
+            temperature=0.1,
+            default_headers={
+                "HTTP-Referer": "http://localhost:8000",
+                "X-Title": "CivicConnect AI",
+            },
         )
-        self.vision_llm = ChatMistralAI(
-            model="pixtral-12b-2409",  # Mistral vision model
-            mistral_api_key=settings.MISTRAL_API_KEY,
-            temperature=0.1
+        self.vision_llm = ChatOpenAI(
+            model="mistralai/pixtral-12b-2409",  # Mistral vision model via OpenRouter
+            openai_api_key=settings.OPENROUTER_API_KEY,
+            openai_api_base=settings.OPENROUTER_BASE_URL,
+            temperature=0.1,
+            default_headers={
+                "HTTP-Referer": "http://localhost:8000",
+                "X-Title": "CivicConnect AI",
+            },
         )
     
     async def analyze_documents(self, document_paths: List[str]) -> Optional[str]:

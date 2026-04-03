@@ -29,27 +29,28 @@ async def monitor_grievance_submissions():
     for new submissions with status 'submitted' and triggers analysis pipeline.
     """
     db = get_grievance_db()  # Synchronous call
-    collection = db.grievance_forms
+    collection = db.collection("grievance_forms")
     
     while True:
         try:
             print("Polling for new grievances...")
             # Query for documents with status 'submitted'
-            cursor = collection.find({"status": "submitted"})
-            async for doc in cursor:
-                print(f"Processing new grievance: {doc.get('form_id')}")
+            docs = collection.where("status", "==", "submitted").stream()
+            async for doc in docs:
+                grievance_doc = doc.to_dict()
+                print(f"Processing new grievance: {grievance_doc.get('form_id')}")
                 
                 # Extract GrievanceData from document
                 grievance = GrievanceData(
-                    form_id=doc['form_id'],
-                    user_id=doc['user_id'],
-                    title=doc['title'],
-                    full_description=doc['full_description'],
-                    category=doc['category'],
-                    area_ward_name=doc['area_ward_name'],
-                    impacted_population=doc['impacted_population'],
-                    is_recurring=doc['is_recurring'],
-                    document_paths=doc.get('document_paths', [])
+                    form_id=grievance_doc['form_id'],
+                    user_id=grievance_doc['user_id'],
+                    title=grievance_doc.get('title'),
+                    full_description=grievance_doc.get('full_description'),
+                    category=grievance_doc.get('category'),
+                    area_ward_name=grievance_doc.get('area_ward_name'),
+                    impacted_population=grievance_doc.get('impacted_population'),
+                    is_recurring=grievance_doc.get('is_recurring', False),
+                    document_paths=grievance_doc.get('document_paths', [])
                 )
                 
                 # Run analysis pipeline
@@ -186,7 +187,8 @@ async def save_analysis_record(grievance: GrievanceData, analysis: AnalysisResul
         analyzed_at=analysis.analyzed_at
     )
     
-    await db.analysis_records.insert_one(record.model_dump())
+    doc_ref = db.collection("analysis_records").document()
+    await doc_ref.set(record.model_dump())
 
 async def update_grievance_status(
     form_id: str, 
@@ -215,22 +217,25 @@ async def update_grievance_status(
         update_data["parent_form_id"] = analysis.vector_check.parent_form_id
         update_data["similarity_score"] = analysis.vector_check.similarity_score  # Added for citizen info
     
-    await db.grievance_forms.update_one(
-        {"form_id": form_id},
-        {"$set": update_data}
-    )
+    docs = db.collection("grievance_forms").where("form_id", "==", form_id).limit(1).stream()
+    async for doc in docs:
+        await doc.reference.update(update_data)
 
 @router.get("/analysis/{form_id}")
 async def get_analysis(form_id: str):
     """Retrieve analysis record for a form"""
     db = get_analysis_db()  # Synchronous call
     
-    record = await db.analysis_records.find_one({"form_id": form_id})
+    record = None
+    docs = db.collection("analysis_records").where("form_id", "==", form_id).limit(1).stream()
+    async for doc in docs:
+        record = doc.to_dict()
+        record["_id"] = doc.id
+        break
     
     if not record:
         raise HTTPException(status_code=404, detail="Analysis record not found")
     
-    record["_id"] = str(record["_id"])
     return record
 
 @router.get("/health")

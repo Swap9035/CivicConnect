@@ -1,25 +1,22 @@
 import os
+import asyncio
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-import asyncio
 
+from shared.firebase_client import get_firestore_client
 from services.user_service.src.api.user_routes import router as user_router
 from services.AIFormFilling.src.apis.routes import router as grievance_router
-from services.AIFormFilling.src.db.connection import connect_to_mongo, close_mongo_connection
 from services.AIAnalysis.apis.routes import router as analysis_router, monitor_grievance_submissions
-from services.AIAnalysis.db.connection import connect_to_mongo as connect_analysis_mongo, close_mongo_connection as close_analysis_mongo
 
 # Import SuperUser service components
-from services.superuser_services.config import settings as superuser_settings
-from services.superuser_services.db.connection import connect_to_mongo as connect_superuser_mongo, close_mongo_connection as close_superuser_mongo
-from services.superuser_services.utils.seed_data import create_initial_superadmin, seed_sample_data
+from services.superuser_services.utils.seed_data import create_initial_superadmin
 from services.superuser_services.apis.auth_apis import router as auth_router
 from services.superuser_services.apis.admin_apis import router as admin_router
 
 # Import OfficerResolutionService components
-from services.OfficerResolutionService import resolution_router, init_officer_resolution_service, cleanup_officer_resolution_service
+from services.OfficerResolutionService import resolution_router
 
 # Import ClarificationService router
 from services.clarification_service.apis.routes import router as clarification_router
@@ -27,9 +24,7 @@ from services.clarification_service.apis.routes import router as clarification_r
 # Import FeedbackService router
 from services.feedback_service.apis.feedback_routes import router as feedback_router
 
-# Import Nagpur Data Service components
-from services.nagpur_data_service.db.connection import connect_nagpur_db, close_nagpur_db
-from services.nagpur_data_service.scripts.seed_wards import seed_wards
+# Import Nagpur Data Service routers
 from services.nagpur_data_service.apis.ward_routes import router as nagpur_ward_router
 from services.nagpur_data_service.apis.analytics_routes import router as nagpur_analytics_router
 from services.nagpur_data_service.apis.dataset_routes import router as nagpur_dataset_router
@@ -38,29 +33,21 @@ load_dotenv()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
-    await connect_to_mongo()  # For grievance service
-    connect_analysis_mongo()  # For analysis service (synchronous)
-    await connect_superuser_mongo()  # For SuperUser service
-    await init_officer_resolution_service()  # For OfficerResolutionService
-    await create_initial_superadmin()
-
-    # Connect Nagpur civic data DB and seed wards
-    nagpur_db = await connect_nagpur_db()
-    await seed_wards(nagpur_db)
+    # Startup: Firebase client will be initialized on first use via shared.firebase_client
+    # Seed initial roles/admins
+    try:
+        await create_initial_superadmin()
+    except Exception as e:
+        print(f"Warning: Failed to create initial superadmin: {e}")
 
     # Start background worker to monitor grievance submissions
     asyncio.create_task(monitor_grievance_submissions())
     yield
-    # Shutdown
-    await close_mongo_connection()  # For grievance service
-    close_analysis_mongo()  # For analysis service (synchronous)
-    await close_superuser_mongo()  # For SuperUser service
-    await cleanup_officer_resolution_service()  # For OfficerResolutionService
-    await close_nagpur_db()  # For Nagpur Data Service
+    # Shutdown: No explicit cleanup required for Firestore client
+    pass
 
 app = FastAPI(
-    title="GFG Backend",
+    title="CivicConnect Backend (Firebase)",
     version="1.0.0",
     lifespan=lifespan
 )

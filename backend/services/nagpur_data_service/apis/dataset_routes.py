@@ -4,7 +4,6 @@ from services.nagpur_data_service.db.connection import get_nagpur_db
 
 router = APIRouter()
 
-
 @router.get("/water-supply")
 async def get_water_supply(
     ward_id: Optional[str] = None,
@@ -14,20 +13,25 @@ async def get_water_supply(
 ):
     """Get water supply data, filterable by ward/zone."""
     db = get_nagpur_db()
-    query = {}
-    if ward_id:
-        query["ward_id"] = ward_id
-    if zone_id:
-        query["zone_id"] = zone_id
+    coll = db.collection("water_supply_data")
     
-    total = await db.water_supply_data.count_documents(query)
+    query = coll
+    if ward_id:
+        query = query.where("ward_id", "==", ward_id)
+    if zone_id:
+        query = query.where("zone_id", "==", zone_id)
+    
+    total_snap = await query.count().get()
+    total = total_snap[0].value
+    
     records = []
-    async for doc in db.water_supply_data.find(query).skip(skip).limit(limit):
-        doc["_id"] = str(doc["_id"])
-        records.append(doc)
+    docs = query.offset(skip).limit(limit).stream()
+    async for doc in docs:
+        data = doc.to_dict()
+        data["_id"] = doc.id
+        records.append(data)
     
     return {"records": records, "total": total, "skip": skip, "limit": limit}
-
 
 @router.get("/sanitation")
 async def get_sanitation(
@@ -38,20 +42,25 @@ async def get_sanitation(
 ):
     """Get sanitation data, filterable by ward/zone."""
     db = get_nagpur_db()
-    query = {}
-    if ward_id:
-        query["ward_id"] = ward_id
-    if zone_id:
-        query["zone_id"] = zone_id
+    coll = db.collection("sanitation_data")
     
-    total = await db.sanitation_data.count_documents(query)
+    query = coll
+    if ward_id:
+        query = query.where("ward_id", "==", ward_id)
+    if zone_id:
+        query = query.where("zone_id", "==", zone_id)
+    
+    total_snap = await query.count().get()
+    total = total_snap[0].value
+    
     records = []
-    async for doc in db.sanitation_data.find(query).skip(skip).limit(limit):
-        doc["_id"] = str(doc["_id"])
-        records.append(doc)
+    docs = query.offset(skip).limit(limit).stream()
+    async for doc in docs:
+        data = doc.to_dict()
+        data["_id"] = doc.id
+        records.append(data)
     
     return {"records": records, "total": total, "skip": skip, "limit": limit}
-
 
 @router.get("/civic-metrics")
 async def get_civic_metrics(
@@ -63,32 +72,42 @@ async def get_civic_metrics(
 ):
     """Get civic infrastructure metrics."""
     db = get_nagpur_db()
-    query = {}
-    if ward_id:
-        query["ward_id"] = ward_id
-    if zone_id:
-        query["zone_id"] = zone_id
-    if category:
-        query["metric_category"] = category
+    coll = db.collection("civic_metrics")
     
-    total = await db.civic_metrics.count_documents(query)
+    query = coll
+    if ward_id:
+        query = query.where("ward_id", "==", ward_id)
+    if zone_id:
+        query = query.where("zone_id", "==", zone_id)
+    if category:
+        query = query.where("metric_category", "==", category)
+    
+    total_snap = await query.count().get()
+    total = total_snap[0].value
+    
     records = []
-    async for doc in db.civic_metrics.find(query).skip(skip).limit(limit):
-        doc["_id"] = str(doc["_id"])
-        records.append(doc)
+    docs = query.offset(skip).limit(limit).stream()
+    async for doc in docs:
+        data = doc.to_dict()
+        data["_id"] = doc.id
+        records.append(data)
     
     return {"records": records, "total": total, "skip": skip, "limit": limit}
-
 
 @router.get("/datasets/summary")
 async def get_datasets_summary():
     """Get summary counts for all loaded datasets."""
     db = get_nagpur_db()
     
-    water_count = await db.water_supply_data.count_documents({})
-    sanitation_count = await db.sanitation_data.count_documents({})
-    civic_count = await db.civic_metrics.count_documents({})
-    ward_count = await db.wards.count_documents({})
+    water_snap = await db.collection("water_supply_data").count().get()
+    sanitation_snap = await db.collection("sanitation_data").count().get()
+    civic_snap = await db.collection("civic_metrics").count().get()
+    ward_snap = await db.collection("wards").count().get()
+    
+    water_count = water_snap[0].value
+    sanitation_count = sanitation_snap[0].value
+    civic_count = civic_snap[0].value
+    ward_count = ward_snap[0].value
     
     return {
         "wards_loaded": ward_count,
